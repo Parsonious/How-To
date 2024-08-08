@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBR Rollback</title>
+</head>
+
+<body>
+    <article style="
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+        max-width: 80%;
+        margin: auto;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    ">
+    <a id="top"></a>
+        <h1 style="
+            color: #333;
+            font-size: 28px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        ">How To: Rollback ESIS bills from the MBR</h1>
+
+<h2 id="table-of-contents" style="
+    color: #444;
+    font-size: 22px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;">
+    Table Of Contents
+</h2>
+<ol style="
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;">
+    <li style="margin-bottom: 10px;">
+        <a href="#brief-description-of-this-task" style="
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+            display: flex;
+            align-items: center;">
+            <span style="margin-right: 5px;">&#9432;</span>
+            Brief Description of This Task
+        </a>
+    </li>
+    <li style="margin-bottom: 10px;">
+        <a href="#task-prerequisites" style="
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+            display: flex;
+            align-items: center;">
+            <span style="margin-right: 5px;">&#10003;</span>
+            Task Prerequisites
+        </a>
+    </li>
+    <li style="margin-bottom: 10px;">
+        <details style="margin-bottom: 10px;">
+          <summary style="
+                color: #0066cc;
+                text-decoration: none;
+                cursor: pointer;
+                list-style: none;
+                transition: color 0.3s, text-decoration 0.3s;
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;">
+            <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\logo_tiny_no_background.png" alt="CIQ" style="width: 20px; height: 20px; margin-right: 5px;"></img>
+            Sample Tickets
+            </summary>
+            <ul id="sample-tickets" style="
+                margin: 10px 0 0 20px;
+                padding: 0;
+                list-style-type: none;">
+                            <li>
+                              <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\CIQ_i.png" alt="CIQ I" style="width: 5px; height: 15px; margin-right: 5px;">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88485" style="color: #0066cc; text-decoration: none;">88484</a>
+                            </li>
+                            <li>
+                              <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\CIQ_i.png" alt="CIQ Icon" style="width: 5px; height: 15px; margin-right: 5px;">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88988" style="color: #0066cc; text-decoration: none;">88988</a>
+                            </li>
+                            <li>
+                              <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\CIQ_i.png" alt="CIQ Icon" style="width: 5px; height: 15px; margin-right: 5px;">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88470" style="color: #0066cc; text-decoration: none;">88740</a>
+                            </li>
+            </ul>
+        </details>
+    </li>
+    <li style="margin-bottom: 10px;">
+        <a href="#keywords-to-look-for" style="
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+            display: flex;
+            align-items: center;">
+            <span style="margin-right: 5px;">&#128273;</span>
+            Keywords To Look For
+        </a>
+    </li>
+    <li style="margin-bottom: 10px;">
+        <details style="margin-bottom: 10px;">
+            <summary style="
+                color: #0066cc;
+                text-decoration: none;
+                cursor: pointer;
+                list-style: none;
+                transition: color 0.3s, text-decoration 0.3s;
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;">
+                <span style="margin-right: 5px;">&#128736;</span>
+                Steps To Working These Tickets
+            </summary>
+            <ul style="
+                margin: 10px 0 0 20px;
+                padding: 0;
+                list-style-type: none;">
+                <li style="margin-bottom: 10px;">
+                    <a href="#identify-the-ticket" style="
+                        color: #0066cc;
+                        text-decoration: none;
+                        padding-top: 2px;
+                        transition: color 0.3s, text-decoration 0.3s;
+                        display: flex;
+                        align-items: center;">
+                        <span style="margin-right: 5px;">&#128269;</span>
+                        Identify The Ticket
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <details style="margin-bottom: 10px;">
+                        <summary style="
+                            color: #0066cc;
+                            text-decoration: none;
+                            cursor: pointer;
+                            list-style: none;
+                            transition: color 0.3s, text-decoration 0.3s;
+                            display: flex;
+                            align-items: center;">
+                            <span style="margin-right: 5px;">&#9997;</span>
+                            Fill Out Ticket Form
+                        </summary>
+                        <ul style="
+                            margin: 10px 0 0 20px;
+                            padding: 0;
+                            color: #91918E;
+                            list-style-type: none;">
+                            <li style="margin-bottom: 5px;">
+                                <a href="#section-1" style="
+                                    color: #0066cc;
+                                    text-decoration: none;
+                                    transition: color 0.3s, text-decoration 0.3s;
+                                    display: flex;
+                                    align-items: center;">
+                                    <span style="margin-right: 5px;">&#128221;</span>
+                                    Section 1
+                                </a>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <a href="#section-2" style="
+                                    color: #0066cc;
+                                    text-decoration: none;
+                                    transition: color 0.3s, text-decoration 0.3s;
+                                    display: flex;
+                                    align-items: center;">
+                                    <span style="margin-right: 5px;">&#128221;</span>
+                                    Section 2
+                                </a>
+                            </li>
+                            <li style="margin-bottom: 5px;">
+                                <a href="#section-3" style="
+                                    color: #0066cc;
+                                    text-decoration: none;
+                                    transition: color 0.3s, text-decoration 0.3s;
+                                    display: flex;
+                                    align-items: center;">
+                                    <span style="margin-right: 5px;">&#128221;</span>
+                                    Section 3
+                                </a>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a href="#identify-x" style="
+                        color: #0066cc;
+                        text-decoration: none;
+                        transition: color 0.3s, text-decoration 0.3s;
+                        display: flex;
+                        align-items: center;">
+                        <span style="margin-right: 5px;">&#128270;</span>
+                        Identify X
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a href="#write-your-sql" style="
+                        color: #0066cc;
+                        text-decoration: none;
+                        transition: color 0.3s, text-decoration 0.3s;
+                        display: flex;
+                        align-items: center;">
+                        <span style="margin-right: 5px;">&#128736;</span>
+                        Write Your SQL
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a href="#update-your-ticket" style="
+                        color: #0066cc;
+                        text-decoration: none;
+                        transition: color 0.3s, text-decoration 0.3s;
+                        display: flex;
+                        align-items: center;">
+                        <span style="margin-right: 5px;">&#128190;</span>
+                        Update Your Ticket
+                    </a>
+                </li>
+            </ul>
+        </details>
+    </li>
+</ol>
+
+<hr style="
+border: none;
+border-top: 1px solid rgba(0, 0, 0, 0.1);
+margin: 20px 0;
+width: 80%; /* Adjust width as needed */
+margin-left: auto;
+margin-right: auto;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+">
+
+        <h2 style="
+        color: #444;
+        font-size: 22px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        text-align: center;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+    " id="brief-description-of-this-task">Brief Description of This Task</h2>
+        <p style="
+        margin: 5px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        color: #555;
+        list-style-type: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: 'Arial', sans-serif;
+    ">This is an almost daily task that requires Technical support to run the supplied DCNs through a stored procedure on GalantUT in the ESIS database.
+     This task is being run to allow bills that hit various MBR validations to export on an MBR file.</p>
+        <div style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    ">
+    
+        <div style="
+            flex: 1;
+        ">
+            <h2 style="
+                color: #444;
+                font-size: 22px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                text-align: center;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 10px 20px;
+            " id="task-prerequisites">Task Prerequisites</h2>
+            <ul style="
+                margin: 5px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+                color: #555;
+                list-style-type: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: 'Arial', sans-serif;
+            ">
+                
+                <li style="margin-bottom: 10px;"><span style="margin-right: 5px;">&#10003;</span> Access to GalantUT SQL Server</li>
+                <li style="margin-bottom: 10px;"><span style="margin-right: 5px;">&#10003;</span> Read/Write Access to the ESIS DB on GalantUT</li>
+                <li style="margin-bottom: 10px;"><span style="margin-right: 5px;">&#10003;</span> Store Procedure execution privelages on ESIS DB</li>
+                <li style="margin-bottom: 10px;"><span style="margin-right: 5px;">&#10003;</span> DCNs requested for Rollback</li>
+            </ul>
+        </div>
+    
+        <div style="
+            flex: 1;
+        ">
+            <h2 style="
+                color: #444;
+                font-size: 22px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                text-align: center;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 10px 20px;
+            " id="keywords-to-look-for">Keywords To Look For</h2>
+            <ul style="
+                margin: 5px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+                color: #555;
+                list-style-type: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: 'Arial', sans-serif;
+            ">
+                <li style="
+                display: inline-block;
+                margin: 5px;
+                padding: 2px 3px;
+                background-color: rgba(224, 224, 224, 0.411); /* Light gray background */
+                color: #333; /* Darker text color */
+                font-weight: bold; /* Normal font weight */
+                border-radius: 3px; /* Slightly rounded corners */
+                font-size: 14px; /* Slightly larger font size */
+                ">MBR Validation</li>
+                <li style="
+                display: inline-block;
+                margin: 5px;
+                padding: 2px 3px;
+                background-color: rgba(224, 224, 224, 0.411); /* Light gray background */
+                color: #333; /* Darker text color */
+                font-weight: bold; /* Normal font weight */
+                border-radius: 3px; /* Slightly rounded corners */
+                font-size: 14px; /* Slightly larger font size */
+                ">Rollback</li>
+                <li style="
+                display: inline-block;
+                margin: 5px;
+                padding: 2px 3px;
+                background-color: rgba(224, 224, 224, 0.411); /* Light gray background */
+                color: #333; /* Darker text color */
+                font-weight: bold; /* Normal font weight */
+                border-radius: 3px; /* Slightly rounded corners */
+                font-size: 14px; /* Slightly larger font size */
+                ">Invalid ICDs</li>
+            </ul>
+        </div>
+    
+    </div>
+    <hr style="
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 80%; /* Adjust width as needed */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+">
+        <h3 style="
+            color: #444;
+            font-size: 22px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        " id="identify-the-ticket">Identify The Ticket</h3>
+
+<p style="
+margin: 5px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: #f9f9f9;
+color: #555;
+list-style-type: none;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+font-family: 'Arial', sans-serif;
+overflow: hidden; /* Ensure the content wraps around the floating image */
+">
+<img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-title.png" 
+alt="Ticket Title" 
+title="Ticket Title" 
+style="
+    float: left;
+    margin-right: 15px; /* Adjust as needed for spacing */
+    border-radius: 10px; /* Rounded edges */
+    width: auto; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+">
+Easy identification of these tickets can be made by either the title of the ticket and or the keywords that can be easily found in the ticket <b title="First ticket comment" id="opening-term">opening<sup><a href="#opening-definition" style="text-decoration: dashed;">*</a></sup></b>. 
+</p>
+<div style="
+margin: 5px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: #f9f9f9;
+color: #555;
+list-style-type: none;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+font-family: 'Arial', sans-serif;
+display: flex; /* Enable flexbox */
+align-items: center; /* Center content vertically */
+overflow: hidden; /* Ensure the content wraps around the floating image */
+">
+<img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-opening.png" alt="Ticket Opening" 
+title="Ticket Opening" 
+style="
+    margin-right: 15px; /* Adjust as needed for spacing */
+        border-radius: 10px; /* Rounded edges */
+        width: auto; /* Adjust as needed */
+        height: auto; /* Maintain aspect ratio */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 50%;
+">
+<p style="margin: 0; /* Remove default margin */
+line-height: 1.6; /* Adjust line height for readability */
+padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f7f7f7;
+        color: #555;
+        list-style-type: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;">
+ Here in the opening we can see that one of the keywords (Rollback) is present, above we can see in the title that another keyword is present (MBR Validation). 
+Below the opening sentence we can see the DCNs being requested (511830737, 511836653..)
+</p>
+</div>
+<!-- Back to Top Link with Image -->
+<div style="text-align: center; margin-top: 20px;">
+  <a href="#top" style="
+      text-decoration: none;
+  ">
+      <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
+          width: 40px;
+          height: 40px;
+      ">
+  </a>
+</div>
+        <hr style="
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+
+        <h3 style="
+            color: #444;
+            font-size: 22px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        " id="fill-out-ticket-form">Fill Out Ticket Form</h3>
+
+        <p style="
+            margin: 5px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            color: #555;
+            list-style-type: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden; /* Ensure the content wraps around the floating image */
+        ">As always once the ticket has been identified the ticket forms we as the Technical Support Team are responsible for filling out. 
+        For the ease of discussion and for your reference a stretched version of this form from our sample ticket 
+        (<a href="https://compiqsolutions.zendesk.com/agent/tickets/88485" style="color: #0066cc; text-decoration: none;">88485</a>) 
+        can be seen here. Note that the fields with an asterisk ( * ) are required to be filled out prior to a ticket being marked as <i>Solved</i>. 
+        These fields can be broken out into <b title="Technical Support's responsibility" id="primary-term">Primary Fields<sup><a href="#primary-definition" style="text-decoration:dashed">*</a></sup></b>
+        and <b title="Client's responsibility" id="secondary-term">Secondary Fields<sup><a href="#secondary-definition" style="text-decoration:dashed">*</a></sup></b>.
+       
+        <img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-TFW.png" 
+        alt="Ticket Forms Whole" 
+        title="Ticket Fields Full" 
+        style="
+            display: block; /* Ensures the image behaves like a block element */
+            margin: 20px auto; /* Centers the image horizontally and adds vertical space */
+            border-radius: 20px; /* Rounded edges */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
+            max-width: 80%; /* Adjust as needed */
+            height: auto; /* Maintain aspect ratio */
+            width: auto; /* Adjust width */
+        ">
+      <hr style="
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+               <!-- Back to Top Link with Image -->
+       <a href="#top" style="
+       display: block;
+       margin: 0 auto;
+       text-align: center;
+       text-decoration: none;
+   ">
+       <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
+           width: 40px;
+           height: 40px;
+       ">
+   </a>  
+      </p>
+        <h4 style="
+            color: #555; 
+            font-size: 18px; 
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px; 
+            margin-bottom: 12px; 
+            text-align: center;
+            background-color: #f5f5f5; 
+            border-radius: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 8px 16px; 
+        " id="section-1">Section 1</h4>
+
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-TFL.png" alt="Ticket Fields Left" title="Ticket Form Left" 
+                style="
+                width: 50%; /* Adjusts the image size relative to its container */
+                max-width: 450px; /* Sets the maximum width the image can grow to */
+                height: auto; /* Maintains the aspect ratio */
+                border-radius: 8px; /* Rounded edges for the image */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
+                display: block;
+                margin: 0 auto;
+                ">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5 style="
+                color: #666;
+                font-size: 16px;
+                margin-bottom: 10px;
+            ">Primary Fields</h5>
+            <ul style="
+                margin: 0;
+                padding-left: 20px;
+                color: #555;
+                background-color: #f9f9f9; /* Background for list */
+                padding: 10px; /* Padding for list */
+                border-radius: 8px; /* Rounded edges for the list */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
+                list-style-position: inside;
+              ">
+                <li style="padding-left:5px;">Account Manager - Michael Marshall</li>
+            </ul>
+            </div>
+        </div>
+
+        <hr style="
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+
+        <h4 style="
+            color: #555; 
+            font-size: 18px; 
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px; 
+            margin-bottom: 12px; 
+            text-align: center;
+            background-color: #f5f5f5; 
+            border-radius: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 8px 16px; 
+        " id="section-2">Section 2</h4>
+        
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-TFM.png" 
+                alt="Ticket Fields Middle Example" title="The middle section of the Ticket Fields screenshot" 
+                style="
+                width: 50%; /* Adjusts the image size relative to its container */
+                max-width: 450px; /* Sets the maximum width the image can grow to */
+                height: auto; /* Maintains the aspect ratio */
+                border-radius: 8px; /* Rounded edges for the image */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
+                display: block;
+                margin: 0 auto;
+                ">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5 style="
+                    color: #666;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                ">Primary Fields</h5>
+                <ul style="
+                    margin: 0;
+                    padding-left: 20px;
+                    color: #555;
+                    background-color: #f9f9f9; /* Background for list */
+                    padding: 10px; /* Padding for list */
+                    border-radius: 8px; /* Rounded edges for the list */
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
+                    list-style-position: inside;
+                  ">
+                    <li style="padding-left:5px;">Assignee - Whoever is working the ticket</li>
+                    <li style="padding-left:5px;">Client Name - ESIS</li>
+                    <li style="padding-left:5px;">Classification - Technical Support</li>
+                </ul>
+                <h5 style="
+                    color: #666;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                ">Secondary Field</h5>
+                <ul style="
+                    margin: 0;
+                    padding-left: 20px;
+                    color: #555;
+                    background-color: #f9f9f9; /* Background for list */
+                    padding: 10px; /* Padding for list */
+                    border-radius: 8px; /* Rounded edges for the list */
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
+                    list-style-position: inside;
+                ">
+                    <li style="padding-left: 5px;">Email Address - Whoever opened the ticket</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr style="
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+
+        <h4 style="
+            color: #555; 
+            font-size: 18px; 
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px; 
+            margin-bottom: 12px; 
+            text-align: center;
+            background-color: #f5f5f5; 
+            border-radius: 8px; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 8px 16px; 
+        " id="section-3">Section 3</h4>
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-TFR.png" alt="Ticket Fields Right Example" title="Ticket Form Right" 
+                style="
+                width: 50%; /* Adjusts the image size relative to its container */
+                max-width: 450px; /* Sets the maximum width the image can grow to */
+                height: auto; /* Maintains the aspect ratio */
+                border-radius: 8px; /* Rounded edges for the image */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
+                display: block;
+                margin: 0 auto;
+                ">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5 style="
+                    color: #666;
+                    font-size: 16px;
+                    margin-bottom: 10px;
+                ">Primary Fields</h5>
+                <ul style="
+                    margin: 0;
+                    padding-left: 20px;
+                    color: #555;
+                    background-color: #f9f9f9; /* Background for list */
+                    padding: 10px; /* Padding for list */
+                    border-radius: 8px; /* Rounded edges for the list */
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
+                    list-style-position: inside;
+                ">
+                    <li style="padding-left: 5px;">Client\ClientID - ESIS</li>
+                    <li style="padding-left: 5px;">Cost Center - ESIS</li>
+                    <li style="padding-left: 5px;">Support Category - ESIS - MBR</li>
+                </ul>
+            </div>
+        </div>
+        <hr style="
+            border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+<!-- Back to Top Link with Image -->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="#top" style="
+        text-decoration: none;
+    ">
+        <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
+            width: 40px;
+            height: 40px;
+        ">
+    </a>
+  </div>
+        <h3 style="
+            color: #444;
+            font-size: 22px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        " id="write-your-sql">Write Your SQL</h3>
+
+<div style="
+    margin: 5px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: #f9f9f9;
+color: #555;
+list-style-type: none;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+font-family: 'Arial', sans-serif;
+display: flex; /* Enable flexbox */
+align-items: center; /* Center content vertically */
+overflow: hidden; /* Ensure the content wraps around the floating image */
+">
+    <!-- Code Block -->
+    <div style="
+        flex: 1;
+        max-width: 50%;
+    ">
+        
+            <code contenteditable="true" spellcheck="false" style="
+                display: block;
+                padding: 15px;
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre;
+                color: #000; /* Default text color set to black */
+            "><span style="color: #0000ff;">USE</span> ESIS
+<span style="color: #0fd350;">/**** Set your name and the reason you are Rolling back those DCNs ****/</span>
+<span style="color: #0000ff;">DECLARE</span> @UserName <span style="color: #0000ff;">VARCHAR</span>(20)= <span style="color: #ff0000;">'MBR-Rollback'</span>
+<span style="color: #0000ff;">DECLARE</span> @Reason <span style="color: #0000ff;">VARCHAR</span>(50) = <span style="color: #ff0000;">'Rollback Requested Ticket '</span>
+<span style="color: #0000ff;">DECLARE</span> @Ticket <span style="color: #0000ff;">VARCHAR</span>(12) = <span style="color: #ff0000;">'88485'</span><span style="color: #0fd350;">-- add the ticket number</span>
+<span style="color: #0000ff;">DECLARE</span> @DCNLIST <span style="color: #0000ff;">DCNLIST</span><br>
+<span style="color: #0000ff;">INSERT</span> <span style="color: #0000ff;">INTO</span> @DCNLIST
+<span style="color: #0000ff;">SELECT</span> documentcontrolnumber <span style="color: #0000ff;">FROM</span> bills
+<span style="color: #0000ff;">WHERE</span> documentcontrolnumber <span style="color: #555;">IN</span> (511830737,511836653,511832779,511832943,511838669,511838573,601180148,511834412) <span style="color: #0fd350;">-- add your DCNS separated by commas</span><br>
+<span style="color: #0000ff;">INSERT</span> <span style="color: #0000ff;">INTO</span> CEBRSLog(DCN,action,[UserName], DateTimeStamp)
+<span style="color: #0000ff;">SELECT</span> DCN, @Reason + @Ticket + <span style="color: #ff0000;">' Rolling Back from MBR tables'</span>, @UserName, <span style="color: #ff00ea">GETDATE</span>()
+<span style="color: #0000ff;">FROM</span> @DCNList<br>
+<span style="color: #0000ff;">exec</span> [MBRRollBackDCNs]@DCNLIST
+            </code>
+    </div>
+    
+    <!-- Text Block -->
+    <div style="
+        flex: 1;
+        max-width: 50%;
+    ">
+        <p style="
+            margin: 20px;  
+            line-height: 1.6; /* Adjust line height for readability */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f7f7f7;
+            color: #555;
+            list-style-type: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        ">Pay special attention to the values that need to be updated when you run your sql. 
+            Both the Ticket variable (@Ticket) and the DCNs added to the DCN list need to be updated. 
+            Additionally, ensure that the DCNs are added as a comma separated list before attempting to run the script.
+        </p>
+    </div>
+</div>
+
+
+
+        <hr style="
+           border: none;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        ">
+
+        <h3 style="
+           color: #444;
+            font-size: 22px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        " id="update-your-ticket">Update Your Ticket</h3>
+
+<div style="
+margin: 5px;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+background-color: #f9f9f9;
+color: #555;
+list-style-type: none;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+font-family: 'Arial', sans-serif;
+display: flex; /* Enable flexbox */
+align-items: center; /* Center content vertically */
+overflow: hidden; /* Ensure the content wraps around the floating image */
+">
+<img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-sql.png" alt="SQL Note" title="SQL Note" 
+     style="
+        margin-right: 15px; /* Adjust as needed for spacing */
+        border-radius: 10px; /* Rounded edges */
+        width: auto; /* Adjust as needed */
+        height: auto; /* Maintain aspect ratio */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 50%;
+     ">
+<p style="
+    margin: 0; /* Remove default margin */
+    line-height: 1.6; /* Adjust line height for readability */
+    padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f7f7f7;
+            color: #555;
+            list-style-type: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+">
+    It is good practice to note the SQL used in your ticket for future reference as seen here.
+</p>
+</div>
+<div style="
+            margin: 5px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            color: #555;
+            list-style-type: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Center content vertically */
+            overflow: hidden; /* Ensure the content wraps around the floating image */
+        ">
+        <img src="D:\CIQ-WORK\Work\Write Ups\MBR Rollback\Images\mbr-response.png" alt="Response" title="Ticket Response" 
+        style="
+        float: left;
+        margin-right: 15px; /* Adjust as needed for spacing */
+        border-radius: 10px; /* Rounded edges */
+        width: auto; /* Adjust as needed */
+        height: auto; /* Maintain aspect ratio */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: block;
+        margin: 20px;
+        max-width: 50%;
+    ">
+        <p style="margin: 0; /* Remove default margin */
+        line-height: 1.6; /* Adjust line height for readability */
+        padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background-color: #f7f7f7;
+                color: #555;
+                list-style-type: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: 'Arial', sans-serif;
+                overflow: hidden;">Finally, you will need to notify the ticket opener that the DCNs have been unstuck as requested, an example of which can be seen here.
+        It is perfectly acceptable to mark these tickets as <i>solved</i> immediately after verifying the Rollback was successful.</p>
+</div>
+        
+  <h5 style="
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 10px;
+  ">Definitions</h5>
+  <div style="font-size: 0.9em; color: #555; margin-top: 20px;">
+    <p id="primary-definition"><sup>*</sup> <b>Primary Fields</b>: Fields that the Technical Support team is primarily responsible for filling out. <a href="#primary-term" style="text-decoration: none;">[Back]</a></p>
+    <p id="secondary-definition"><sup>*</sup> <b>Secondary Fields</b>: Fields that the Ticket Opener is primarily responsible for filling out but on occasion Technical Support might need to ensure is filled out. <a href="#secondary-term" style="text-decoration: none;">[Back]</a></p>
+    <p id="opening-definition"><sup>*</sup> <b>Opening</b>: The first comment made in a ticket by whoever created (or opened) the ticket.<a href="#opening-term" style="text-decoration: none;">[Back]</a></p>
+  </div>  
+  <!-- Back to Top Link with Image -->
+<div style="text-align: center; margin-top: 20px;">
+  <a href="#top" style="
+      text-decoration: none;
+  ">
+      <img src="D:\CIQ-WORK\Work\Write Ups\CIQ Icons\logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
+          width: 40px;
+          height: 40px;
+      ">
+  </a>
+</div>
+  </article>
+</body>
+
+</html>
