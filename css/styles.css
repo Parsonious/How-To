@@ -11,13 +11,13 @@ article {
 }
 
 /* Styles for headings */
-h1, h2 {
+h1, h2, h3, h4 {
     color: #444;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
     margin-bottom: 15px;
     background-color: #f2f2f2;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     text-align: center;
@@ -26,13 +26,29 @@ h1, h2 {
 /* Specific styles for h1 */
 h1 {
     font-size: 28px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 3px solid #ddd;
 }
 
 /* Specific styles for h2 */
 h2 {
     font-size: 22px;
+    border-bottom: 2px solid #ddd;
+}
+h3 {
+    font-size: 20px;
     border-bottom: 1px solid #ddd;
+}
+h4 {
+    font-size: 18px;
+    border-bottom: 0px;
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+h5 {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 /* Styles for paragraphs */
 p {
@@ -44,6 +60,17 @@ p {
     color: #555;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/*Styles for images inside paragraphs*/
+p img{
+    float: left;
+    margin-right: 15px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* Table of Contents styles */
@@ -61,7 +88,7 @@ p {
 }
 
 /* Ordered list styles */
-ol {
+ol, ul {
     margin: 5px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -72,17 +99,24 @@ ol {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
 }
+/* Nested list styles */
 ul {
-    margin: 5px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    color: #555;
-    list-style-type: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    margin: 10px 0 0 20px;
+    list-style-position: inside;
 }
+
+    ul li {
+        margin-bottom: 10px;
+        padding: 3px;
+    }
+
+        ul li a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+            display: flex;
+            align-items: center;
+        }
 /* Styles for list items */
 li {
     margin-bottom: 10px;
@@ -93,13 +127,12 @@ li {
         margin-right: 5px;
     }
 
-/* Link styles */
+/* Styles for links */
 a {
+    display: inline;
     color: #0066cc;
     text-decoration: none;
     transition: color 0.3s, text-decoration 0.3s;
-    display: flex;
-    align-items: center;
 }
 
 /* Details and summary styles */
@@ -114,8 +147,6 @@ summary {
     list-style: none;
     transition: color 0.3s, text-decoration 0.3s;
     margin-bottom: 5px;
-    display: flex;
-    align-items: center;
 }
 
 /* Image styles */
@@ -123,24 +154,7 @@ img {
     margin-right: 5px;
 }
 
-/* Nested list styles */
-ul {
-    margin: 10px 0 0 20px;
-    padding: 0;
-    list-style-type: none;
-}
 
-    ul li {
-        margin-bottom: 10px;
-    }
-
-        ul li a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s, text-decoration 0.3s;
-            display: flex;
-            align-items: center;
-        }
 /* Styles for horizontal rules */
 hr {
     border: none;
@@ -152,6 +166,30 @@ hr {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+/*Code block styles*/
+code {
+    display: block;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    white-space: pre;
+    color: #000; /* Default text color set to black */
+}
+
+/* Back to Top Link */
+a.back-to-top {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+    a.back-to-top img {
+        width: 40px;
+        height: 40px;
+    }
+
 
 /* Flex container for side-by-side sections */
 .flex-container {
@@ -195,7 +233,87 @@ hr {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-family: Arial, sans-serif;
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Flex item image styling */
+.flex-item-image {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 50%;
+    margin-right: 15px;
+}
+
+/* Flex item text styling */
+.flex-item-text {
+    margin: 0;
+    line-height: 1.6;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+/*Flex item code block*/
+.flex-item-code {
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Center content vertically */
+    overflow: hidden; /* Ensure the content wraps around the floating image */
+}
+/* Image floating left in paragraphs */
+.image-left {
+    float: left;
+    margin-right: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.image-left-2 {
+    float: left;
+    margin-right: 15px; /* Adjust as needed for spacing */
+    border-radius: 10px; /* Rounded edges */
+    width: auto; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 20px;
+    max-width: 50%;
+}
+.image-half {
+    width: 50%; /* Adjusts the image size relative to its container */
+    max-width: 450px; /* Sets the maximum width the image can grow to */
+    height: auto; /* Maintains the aspect ratio */
+    border-radius: 8px; /* Rounded edges for the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
+    display: block;
+    margin: 0 auto;
+}
+/* Back to Top container */
+.back-to-top-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Back to Top link */
+.back-to-top-link img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Dashed underline for links */
+.dashed-link {
+    text-decoration: dashed;
 }

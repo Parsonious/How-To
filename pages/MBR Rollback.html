@@ -9,16 +9,7 @@
 </head>
 
 <body>
-    <article style="
-        background-color: #f9f9f9;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-family: Arial, sans-serif;
-        max-width: 80%;
-        margin: auto;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    ">
+    <article class="article-container">
         <a id="top"></a>
         <h1>How To: Rollback ESIS bills from the MBR</h1>
 
@@ -43,7 +34,7 @@
                         <img src="../Images/logo_tiny_no_background.png" class="img-micro-logo" alt="CIQ">
                         Sample Tickets
                     </summary>
-                    <ul id="sample-tickets">
+                    <ul style="border: none;" id="sample-tickets">
                         <li>
                             <img src="../Images/CIQ_i.png" class="img-micro-i" alt="CIQ I">
                             <a href="https://compiqsolutions.zendesk.com/agent/tickets/88485">88484</a>
@@ -150,146 +141,39 @@
         </div>
 
         </div>
-        <hr style="
-    border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    width: 80%; /* Adjust width as needed */
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-">
-        <h3 style="
-            color: #444;
-            font-size: 22px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        " id="identify-the-ticket">
+        <hr>
+        <h3 id="identify-the-ticket">
             Identify The Ticket
         </h3>
 
-        <p style="
-margin: 5px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 10px;
-background-color: #f9f9f9;
-color: #555;
-list-style-type: none;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-font-family: 'Arial', sans-serif;
-overflow: hidden; /* Ensure the content wraps around the floating image */
-">
+        <p>
             <img src="../Images/mbr-title.png"
                  alt="Ticket Title"
-                 title="Ticket Title"
-                 style="
-    float: left;
-    margin-right: 15px; /* Adjust as needed for spacing */
-    border-radius: 10px; /* Rounded edges */
-    width: auto; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-">
-            Easy identification of these tickets can be made by either the title of the ticket and or the keywords that can be easily found in the ticket <b title="First ticket comment" id="opening-term">opening<sup><a href="#opening-definition" style="text-decoration: dashed;">*</a></sup></b>.
+                 title="Ticket Title">
+            Easy identification of these tickets can be made by either the title of the ticket
+            and or the keywords that can be easily found in the ticket<b title="First ticket comment" id="opening-term">opening<sup><a href="#opening-definition" style="text-decoration: dashed;">*</a></sup></b> as seen here.
         </p>
-        <div style="
-margin: 5px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 10px;
-background-color: #f9f9f9;
-color: #555;
-list-style-type: none;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-font-family: 'Arial', sans-serif;
-display: flex; /* Enable flexbox */
-align-items: center; /* Center content vertically */
-overflow: hidden; /* Ensure the content wraps around the floating image */
-">
+        <div class="flex-container">
             <img src="../Images/mbr-opening.png" alt="Ticket Opening"
-                 title="Ticket Opening"
-                 style="
-    margin-right: 15px; /* Adjust as needed for spacing */
-        border-radius: 10px; /* Rounded edges */
-        width: auto; /* Adjust as needed */
-        height: auto; /* Maintain aspect ratio */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        max-width: 50%;
-">
-            <p style="margin: 0; /* Remove default margin */
-line-height: 1.6; /* Adjust line height for readability */
-padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        background-color: #f7f7f7;
-        color: #555;
-        list-style-type: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;">
+                 title="Ticket Opening" class="flex-item-image">
+            <p class="flex-item-text">
                 Here in the opening we can see that one of the keywords (Rollback) is present, above we can see in the title that another keyword is present (MBR Validation).
                 Below the opening sentence we can see the DCNs being requested (511830737, 511836653..)
             </p>
         </div>
+
         <!-- Back to Top Link with Image -->
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="#top" style="
-      text-decoration: none;
-  ">
-                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
-          width: 40px;
-          height: 40px;
-      ">
+        <div class="back-to-top-container">
+            <a href="#top" class="back-to-top-link">
+                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
             </a>
         </div>
-        <hr style="
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
 
-        <h3 style="
-            color: #444;
-            font-size: 22px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        " id="fill-out-ticket-form">
-            Fill Out Ticket Form
-        </h3>
+        <hr>
 
-        <p style="
-            margin: 5px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            color: #555;
-            list-style-type: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: 'Arial', sans-serif;
-            overflow: hidden; /* Ensure the content wraps around the floating image */
-        ">
+        <h3 id="fill-out-ticket-form">Fill Out Ticket Form</h3>
+
+        <p>
             As always once the ticket has been identified the ticket forms we as the Technical Support Team are responsible for filling out.
             For the ease of discussion and for your reference a stretched version of this form from our sample ticket
             (<a href="https://compiqsolutions.zendesk.com/agent/tickets/88485" style="color: #0066cc; text-decoration: none;">88485</a>)
@@ -297,55 +181,19 @@ padding: 20px;
             These fields can be broken out into <b title="Technical Support's responsibility" id="primary-term">Primary Fields<sup><a href="#primary-definition" style="text-decoration:dashed">*</a></sup></b>
             and <b title="Client's responsibility" id="secondary-term">Secondary Fields<sup><a href="#secondary-definition" style="text-decoration:dashed">*</a></sup></b>.
 
-            <img src="../Images/mbr-TFW.png"
+            <img class="image-half" src="../Images/mbr-TFW.png"
                  alt="Ticket Forms Whole"
-                 title="Ticket Fields Full"
-                 style="
-            display: block; /* Ensures the image behaves like a block element */
-            margin: 20px auto; /* Centers the image horizontally and adds vertical space */
-            border-radius: 20px; /* Rounded edges */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-            max-width: 80%; /* Adjust as needed */
-            height: auto; /* Maintain aspect ratio */
-            width: auto; /* Adjust width */
-        ">
-            <hr style="
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
+                 title="Ticket Fields Full">
+            <hr>
+
             <!-- Back to Top Link with Image -->
-            <a href="#top" style="
-       display: block;
-       margin: 0 auto;
-       text-align: center;
-       text-decoration: none;
-   ">
-                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
-           width: 40px;
-           height: 40px;
-       ">
-            </a>
+            <div class="back-to-top-container">
+                <a href="#top" class="back-to-top-link">
+                    <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
+                </a>
+            </div>
         </p>
-        <h4 style="
-            color: #555;
-            font-size: 18px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-align: center;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 8px 16px;
-        " id="section-1">
-            Section 1
-        </h4>
+        <h4 id="section-1">Section 1</h4>
 
         <div style="
             display: flex;
@@ -356,16 +204,7 @@ padding: 20px;
                 flex: 1;
                 max-width: 50%;
             ">
-                <img src="../Images/mbr-TFL.png" alt="Ticket Fields Left" title="Ticket Form Left"
-                     style="
-                width: 50%; /* Adjusts the image size relative to its container */
-                max-width: 450px; /* Sets the maximum width the image can grow to */
-                height: auto; /* Maintains the aspect ratio */
-                border-radius: 8px; /* Rounded edges for the image */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
-                display: block;
-                margin: 0 auto;
-                ">
+                <img class="image-half" src="../Images/mbr-TFL.png" alt="Ticket Fields Left" title="Ticket Form Left">
             </div>
             <div style="
                 flex: 1;
@@ -379,46 +218,15 @@ padding: 20px;
             ">
                     Primary Fields
                 </h5>
-                <ul style="
-                margin: 0;
-                padding-left: 20px;
-                color: #555;
-                background-color: #f9f9f9; /* Background for list */
-                padding: 10px; /* Padding for list */
-                border-radius: 8px; /* Rounded edges for the list */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
-                list-style-position: inside;
-              ">
+                <ul>
                     <li style="padding-left:5px;">Account Manager - Michael Marshall</li>
                 </ul>
             </div>
         </div>
 
-        <hr style="
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
+        <hr>
 
-        <h4 style="
-            color: #555;
-            font-size: 18px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-align: center;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 8px 16px;
-        " id="section-2">
-            Section 2
-        </h4>
+        <h4 id="section-2">Section 2</h4>
 
         <div style="
             display: flex;
@@ -429,91 +237,29 @@ padding: 20px;
                 flex: 1;
                 max-width: 50%;
             ">
-                <img src="../Images/mbr-TFM.png"
-                     alt="Ticket Fields Middle Example" title="The middle section of the Ticket Fields screenshot"
-                     style="
-                width: 50%; /* Adjusts the image size relative to its container */
-                max-width: 450px; /* Sets the maximum width the image can grow to */
-                height: auto; /* Maintains the aspect ratio */
-                border-radius: 8px; /* Rounded edges for the image */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
-                display: block;
-                margin: 0 auto;
-                ">
+                <img class="image-half" src="../Images/mbr-TFM.png" alt="Ticket Fields Middle Example" title="The middle section of the Ticket Fields screenshot">
             </div>
             <div style="
                 flex: 1;
                 padding-left: 20px;
                 max-width: 50%;
             ">
-                <h5 style="
-                    color: #666;
-                    font-size: 16px;
-                    margin-bottom: 10px;
-                ">
-                    Primary Fields
-                </h5>
-                <ul style="
-                    margin: 0;
-                    padding-left: 20px;
-                    color: #555;
-                    background-color: #f9f9f9; /* Background for list */
-                    padding: 10px; /* Padding for list */
-                    border-radius: 8px; /* Rounded edges for the list */
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
-                    list-style-position: inside;
-                  ">
+                <h5>Primary Fields</h5>
+                <ul>
                     <li style="padding-left:5px;">Assignee - Whoever is working the ticket</li>
                     <li style="padding-left:5px;">Client Name - ESIS</li>
                     <li style="padding-left:5px;">Classification - Technical Support</li>
                 </ul>
-                <h5 style="
-                    color: #666;
-                    font-size: 16px;
-                    margin-bottom: 10px;
-                ">
-                    Secondary Field
-                </h5>
-                <ul style="
-                    margin: 0;
-                    padding-left: 20px;
-                    color: #555;
-                    background-color: #f9f9f9; /* Background for list */
-                    padding: 10px; /* Padding for list */
-                    border-radius: 8px; /* Rounded edges for the list */
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
-                    list-style-position: inside;
-                ">
+                <h5>Secondary Field</h5>
+                <ul>
                     <li style="padding-left: 5px;">Email Address - Whoever opened the ticket</li>
                 </ul>
             </div>
         </div>
 
-        <hr style="
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
+        <hr>
 
-        <h4 style="
-            color: #555;
-            font-size: 18px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-align: center;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 8px 16px;
-        " id="section-3">
-            Section 3
-        </h4>
+        <h4 id="section-3">Section 3</h4>
         <div style="
             display: flex;
             align-items: center;
@@ -523,112 +269,38 @@ padding: 20px;
                 flex: 1;
                 max-width: 50%;
             ">
-                <img src="../Images/mbr-TFR.png" alt="Ticket Fields Right Example" title="Ticket Form Right"
-                     style="
-                width: 50%; /* Adjusts the image size relative to its container */
-                max-width: 450px; /* Sets the maximum width the image can grow to */
-                height: auto; /* Maintains the aspect ratio */
-                border-radius: 8px; /* Rounded edges for the image */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
-                display: block;
-                margin: 0 auto;
-                ">
+                <img class="image-half" src="../Images/mbr-TFR.png" alt="Ticket Fields Right Example" title="Ticket Form Right">
             </div>
             <div style="
                 flex: 1;
                 padding-left: 20px;
                 max-width: 50%;
             ">
-                <h5 style="
-                    color: #666;
-                    font-size: 16px;
-                    margin-bottom: 10px;
-                ">
-                    Primary Fields
-                </h5>
-                <ul style="
-                    margin: 0;
-                    padding-left: 20px;
-                    color: #555;
-                    background-color: #f9f9f9; /* Background for list */
-                    padding: 10px; /* Padding for list */
-                    border-radius: 8px; /* Rounded edges for the list */
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the list */
-                    list-style-position: inside;
-                ">
+                <h5>Primary Fields</h5>
+                <ul>
                     <li style="padding-left: 5px;">Client\ClientID - ESIS</li>
                     <li style="padding-left: 5px;">Cost Center - ESIS</li>
                     <li style="padding-left: 5px;">Support Category - ESIS - MBR</li>
                 </ul>
             </div>
         </div>
-        <hr style="
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
+        <hr>
         <!-- Back to Top Link with Image -->
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="#top" style="
-        text-decoration: none;
-    ">
-                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
-            width: 40px;
-            height: 40px;
-        ">
+        <div class="back-to-top-container">
+            <a href="#top" class="back-to-top-link">
+                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
             </a>
         </div>
-        <h3 style="
-            color: #444;
-            font-size: 22px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        " id="write-your-sql">
-            Write Your SQL
-        </h3>
+        <h3 id="write-your-sql">Write Your SQL</h3>
 
-        <div style="
-    margin: 5px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 10px;
-background-color: #f9f9f9;
-color: #555;
-list-style-type: none;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-font-family: 'Arial', sans-serif;
-display: flex; /* Enable flexbox */
-align-items: center; /* Center content vertically */
-overflow: hidden; /* Ensure the content wraps around the floating image */
-">
+        <div class="flex-item-code">
             <!-- Code Block -->
             <div style="
         flex: 1;
         max-width: 50%;
     ">
 
-                <code contenteditable="true" spellcheck="false" style="
-                display: block;
-                padding: 15px;
-                background-color: #ffffff;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                overflow-x: auto;
-                white-space: pre;
-                color: #000; /* Default text color set to black */
-            ">
+                <code contenteditable="true" spellcheck="false">
                     <span style="color: #0000ff;">USE</span> ESIS
                     <span style="color: #0fd350;">/**** Set your name and the reason you are Rolling back those DCNs ****/</span>
                     <span style="color: #0000ff;">DECLARE</span> @UserName <span style="color: #0000ff;">VARCHAR</span>(20)= <span style="color: #ff0000;">'MBR-Rollback'</span>
@@ -650,19 +322,7 @@ overflow: hidden; /* Ensure the content wraps around the floating image */
         flex: 1;
         max-width: 50%;
     ">
-                <p style="
-            margin: 20px;
-            line-height: 1.6; /* Adjust line height for readability */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f7f7f7;
-            color: #555;
-            list-style-type: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        ">
+                <p>
                     Pay special attention to the values that need to be updated when you run your sql.
                     Both the Ticket variable (@Ticket) and the DCNs added to the DCN list need to be updated.
                     Additionally, ensure that the DCNs are added as a comma separated list before attempting to run the script.
@@ -672,135 +332,38 @@ overflow: hidden; /* Ensure the content wraps around the floating image */
 
 
 
-        <hr style="
-           border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            width: 80%; /* Adjust width as needed */
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        ">
+        <hr>
 
-        <h3 style="
-           color: #444;
-            font-size: 22px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-            padding: 15px 10px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        " id="update-your-ticket">
-            Update Your Ticket
-        </h3>
+        <h3 id="update-your-ticket">Update Your Ticket</h3>
 
-        <div style="
-margin: 5px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 10px;
-background-color: #f9f9f9;
-color: #555;
-list-style-type: none;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-font-family: 'Arial', sans-serif;
-display: flex; /* Enable flexbox */
-align-items: center; /* Center content vertically */
-overflow: hidden; /* Ensure the content wraps around the floating image */
-">
-            <img src="../Images/mbr-sql.png" alt="SQL Note" title="SQL Note"
-                 style="
-        margin-right: 15px; /* Adjust as needed for spacing */
-        border-radius: 10px; /* Rounded edges */
-        width: auto; /* Adjust as needed */
-        height: auto; /* Maintain aspect ratio */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        max-width: 50%;
-     ">
+        <div class="flex-item-code">
+            <img class="image-left-2" src="../Images/mbr-sql.png" alt="SQL Note" title="SQL Note">
             <p style="
-    margin: 0; /* Remove default margin */
-    line-height: 1.6; /* Adjust line height for readability */
-    padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            margin: 0; /* Remove default margin */
+            line-height: 1.6; /* Adjust line height for readability */
             background-color: #f7f7f7;
-            color: #555;
-            list-style-type: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-">
+            list-style-type: none;">
                 It is good practice to note the SQL used in your ticket for future reference as seen here.
             </p>
         </div>
-        <div style="
-            margin: 5px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            color: #555;
-            list-style-type: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: 'Arial', sans-serif;
-            display: flex; /* Enable flexbox */
-            align-items: center; /* Center content vertically */
-            overflow: hidden; /* Ensure the content wraps around the floating image */
-        ">
-            <img src="../Images/mbr-response.png" alt="Response" title="Ticket Response"
-                 style="
-        float: left;
-        margin-right: 15px; /* Adjust as needed for spacing */
-        border-radius: 10px; /* Rounded edges */
-        width: auto; /* Adjust as needed */
-        height: auto; /* Maintain aspect ratio */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: block;
-        margin: 20px;
-        max-width: 50%;
-    ">
-            <p style="margin: 0; /* Remove default margin */
-        line-height: 1.6; /* Adjust line height for readability */
-        padding: 20px;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                background-color: #f7f7f7;
-                color: #555;
-                list-style-type: none;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                font-family: 'Arial', sans-serif;
-                overflow: hidden;">
+        <div class="flex-item-code">
+            <img class="image-left-2" src="../Images/mbr-response.png" alt="Response" title="Ticket Response">
+            <p>
                 Finally, you will need to notify the ticket opener that the DCNs have been unstuck as requested, an example of which can be seen here.
                 It is perfectly acceptable to mark these tickets as <i>solved</i> immediately after verifying the Rollback was successful.
             </p>
         </div>
 
-        <h5 style="
-  color: #666;
-  font-size: 16px;
-  margin-bottom: 10px;
-  ">
-            Definitions
-        </h5>
+        <h5>Definitions</h5>
         <div style="font-size: 0.9em; color: #555; margin-top: 20px;">
             <p id="primary-definition"><sup>*</sup> <b>Primary Fields</b>: Fields that the Technical Support team is primarily responsible for filling out. <a href="#primary-term" style="text-decoration: none;">[Back]</a></p>
             <p id="secondary-definition"><sup>*</sup> <b>Secondary Fields</b>: Fields that the Ticket Opener is primarily responsible for filling out but on occasion Technical Support might need to ensure is filled out. <a href="#secondary-term" style="text-decoration: none;">[Back]</a></p>
             <p id="opening-definition"><sup>*</sup> <b>Opening</b>: The first comment made in a ticket by whoever created (or opened) the ticket.<a href="#opening-term" style="text-decoration: none;">[Back]</a></p>
         </div>
         <!-- Back to Top Link with Image -->
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="#top" style="
-      text-decoration: none;
-  ">
-                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top" style="
-          width: 40px;
-          height: 40px;
-      ">
+        <div class="back-to-top-container">
+            <a href="#top" class="back-to-top-link">
+                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
             </a>
         </div>
     </article>
