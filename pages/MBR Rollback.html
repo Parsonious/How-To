@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MBR Rollback</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
@@ -19,217 +20,106 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     ">
     <a id="top"></a>
-        <h1 style="
-            color: #333;
-            font-size: 28px;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        ">How To: Rollback ESIS bills from the MBR</h1>
+        <h1>How To: Rollback ESIS bills from the MBR</h1>
 
-<h2 id="table-of-contents" style="
-    color: #444;
-    font-size: 22px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-    text-align: center;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;">
-    Table Of Contents
-</h2>
-<ol style="
-    margin: 5px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    color: #555;
-    list-style-type: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;">
-    <li style="margin-bottom: 10px;">
-        <a href="#brief-description-of-this-task" style="
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s, text-decoration 0.3s;
-            display: flex;
-            align-items: center;">
-            <span style="margin-right: 5px;">&#9432;</span>
+<h2 id="table-of-contents">Table Of Contents</h2>
+
+<ol>
+    <li>
+        <a href="#brief-description-of-this-task">
+            <span>&#9432;</span>
             Brief Description of This Task
         </a>
     </li>
-    <li style="margin-bottom: 10px;">
-        <a href="#task-prerequisites" style="
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s, text-decoration 0.3s;
-            display: flex;
-            align-items: center;">
-            <span style="margin-right: 5px;">&#10003;</span>
+    <li>
+        <a href="#task-prerequisites">
+            <span>&#10003;</span>
             Task Prerequisites
         </a>
     </li>
-    <li style="margin-bottom: 10px;">
+    <li>
         <details style="margin-bottom: 10px;">
-          <summary style="
-                color: #0066cc;
-                text-decoration: none;
-                cursor: pointer;
-                list-style: none;
-                transition: color 0.3s, text-decoration 0.3s;
-                margin-bottom: 5px;
-                display: flex;
-                align-items: center;">
-            <img src="../Images/logo_tiny_no_background.png" alt="CIQ" style="width: 20px; height: 20px; margin-right: 5px;"></img>
+          <summary>
+            <img src="../Images/logo_tiny_no_background.png" alt="CIQ"></img>
             Sample Tickets
             </summary>
-            <ul id="sample-tickets" style="
-                margin: 10px 0 0 20px;
-                padding: 0;
-                list-style-type: none;">
+            <ul id="sample-tickets">
                             <li>
-                              <img src="../Images/CIQ_i.png" alt="CIQ I" style="width: 5px; height: 15px; margin-right: 5px;">
-                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88485" style="color: #0066cc; text-decoration: none;">88484</a>
+                              <img src="../Images/CIQ_i.png" alt="CIQ I">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88485">88484</a>
                             </li>
                             <li>
-                              <img src="../Images/CIQ_i.png" alt="CIQ Icon" style="width: 5px; height: 15px; margin-right: 5px;">
-                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88988" style="color: #0066cc; text-decoration: none;">88988</a>
+                              <img src="../Images/CIQ_i.png" alt="CIQ Icon">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88988">88988</a>
                             </li>
                             <li>
-                              <img src="../Images/CIQ_i.png" alt="CIQ Icon" style="width: 5px; height: 15px; margin-right: 5px;">
-                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88470" style="color: #0066cc; text-decoration: none;">88740</a>
+                              <img src="../Images/CIQ_i.png" alt="CIQ Icon">
+                              <a href="https://compiqsolutions.zendesk.com/agent/tickets/88470">88740</a>
                             </li>
             </ul>
         </details>
     </li>
-    <li style="margin-bottom: 10px;">
-        <a href="#keywords-to-look-for" style="
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s, text-decoration 0.3s;
-            display: flex;
-            align-items: center;">
-            <span style="margin-right: 5px;">&#128273;</span>
+    <li>
+        <a href="#keywords-to-look-for">
+            <span>&#128273;</span>
             Keywords To Look For
         </a>
     </li>
-    <li style="margin-bottom: 10px;">
-        <details style="margin-bottom: 10px;">
-            <summary style="
-                color: #0066cc;
-                text-decoration: none;
-                cursor: pointer;
-                list-style: none;
-                transition: color 0.3s, text-decoration 0.3s;
-                margin-bottom: 5px;
-                display: flex;
-                align-items: center;">
-                <span style="margin-right: 5px;">&#128736;</span>
+    <li>
+        <details>
+            <summary>&#128736;</span>
                 Steps To Working These Tickets
             </summary>
-            <ul style="
-                margin: 10px 0 0 20px;
-                padding: 0;
-                list-style-type: none;">
-                <li style="margin-bottom: 10px;">
-                    <a href="#identify-the-ticket" style="
-                        color: #0066cc;
-                        text-decoration: none;
-                        padding-top: 2px;
-                        transition: color 0.3s, text-decoration 0.3s;
-                        display: flex;
-                        align-items: center;">
-                        <span style="margin-right: 5px;">&#128269;</span>
+            <ul>
+                <li>
+                    <a href="#identify-the-ticket">
+                        <span>&#128269;</span>
                         Identify The Ticket
                     </a>
                 </li>
-                <li style="margin-bottom: 10px;">
-                    <details style="margin-bottom: 10px;">
-                        <summary style="
-                            color: #0066cc;
-                            text-decoration: none;
-                            cursor: pointer;
-                            list-style: none;
-                            transition: color 0.3s, text-decoration 0.3s;
-                            display: flex;
-                            align-items: center;">
-                            <span style="margin-right: 5px;">&#9997;</span>
+                <li>
+                    <details>
+                        <summary>
+                            <span>&#9997;</span>
                             Fill Out Ticket Form
                         </summary>
-                        <ul style="
-                            margin: 10px 0 0 20px;
-                            padding: 0;
-                            color: #91918E;
-                            list-style-type: none;">
-                            <li style="margin-bottom: 5px;">
-                                <a href="#section-1" style="
-                                    color: #0066cc;
-                                    text-decoration: none;
-                                    transition: color 0.3s, text-decoration 0.3s;
-                                    display: flex;
-                                    align-items: center;">
-                                    <span style="margin-right: 5px;">&#128221;</span>
+                        <ul>
+                            <li>
+                                <a href="#section-1">
+                                    <span>&#128221;</span>
                                     Section 1
                                 </a>
                             </li>
-                            <li style="margin-bottom: 5px;">
-                                <a href="#section-2" style="
-                                    color: #0066cc;
-                                    text-decoration: none;
-                                    transition: color 0.3s, text-decoration 0.3s;
-                                    display: flex;
-                                    align-items: center;">
-                                    <span style="margin-right: 5px;">&#128221;</span>
+                            <li>
+                                <a href="#section-2">
+                                    <span>&#128221;</span>
                                     Section 2
                                 </a>
                             </li>
-                            <li style="margin-bottom: 5px;">
-                                <a href="#section-3" style="
-                                    color: #0066cc;
-                                    text-decoration: none;
-                                    transition: color 0.3s, text-decoration 0.3s;
-                                    display: flex;
-                                    align-items: center;">
-                                    <span style="margin-right: 5px;">&#128221;</span>
+                            <li>
+                                <a href="#section-3">
+                                    <span>&#128221;</span>
                                     Section 3
                                 </a>
                             </li>
                         </ul>
                     </details>
                 </li>
-                <li style="margin-bottom: 10px;">
-                    <a href="#identify-x" style="
-                        color: #0066cc;
-                        text-decoration: none;
-                        transition: color 0.3s, text-decoration 0.3s;
-                        display: flex;
-                        align-items: center;">
-                        <span style="margin-right: 5px;">&#128270;</span>
+                <li>
+                    <a href="#identify-x">
+                        <span>&#128270;</span>
                         Identify X
                     </a>
                 </li>
-                <li style="margin-bottom: 10px;">
-                    <a href="#write-your-sql" style="
-                        color: #0066cc;
-                        text-decoration: none;
-                        transition: color 0.3s, text-decoration 0.3s;
-                        display: flex;
-                        align-items: center;">
+                <li>
+                    <a href="#write-your-sql">
                         <span style="margin-right: 5px;">&#128736;</span>
                         Write Your SQL
                     </a>
                 </li>
                 <li style="margin-bottom: 10px;">
-                    <a href="#update-your-ticket" style="
-                        color: #0066cc;
-                        text-decoration: none;
-                        transition: color 0.3s, text-decoration 0.3s;
-                        display: flex;
-                        align-items: center;">
-                        <span style="margin-right: 5px;">&#128190;</span>
+                    <a href="#update-your-ticket">
+                        <span>&#128190;</span>
                         Update Your Ticket
                     </a>
                 </li>

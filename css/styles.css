@@ -1,0 +1,101 @@
+/* General article styling */
+article {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    max-width: 80%;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1 {
+    color: #333;
+    font-size: 28px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Table of Contents styles */
+#table-of-contents {
+    color: #444;
+    font-size: 22px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+/* Ordered list styles */
+ol {
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* List item styles */
+li {
+    margin-bottom: 10px;
+}
+
+/* Link styles */
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+/* Details and summary styles */
+details {
+    margin-bottom: 10px;
+}
+
+summary {
+    color: #0066cc;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Image styles */
+img {
+    margin-right: 5px;
+}
+
+/* Nested list styles */
+ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+    list-style-type: none;
+}
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+        ul li a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+            display: flex;
+            align-items: center;
+        }
