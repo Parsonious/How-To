@@ -283,8 +283,10 @@ a.back-to-top {
 /* Image floating left in paragraphs */
 .image-left {
     float: left;
-    margin-right: 15px;
-    border-radius: 10px;
+    margin-right: 15px; /* Adjust as needed for spacing */
+    border-radius: 10px; /* Rounded edges */
+    width: auto; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .image-left-2 {
