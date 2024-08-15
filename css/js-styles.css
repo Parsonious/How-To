@@ -1,0 +1,53 @@
+.title
+{
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    background-color: rgb(2,0,36);
+    border: #333;
+    border-radius: 30px;
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+/*Styling for the TOC*/
+.toc 
+{
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.toc ul 
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.toc ul li 
+{
+    margin-bottom: 10px;
+}
+
+.toc ul li a 
+{
+    color: #007bff;
+    text-decoration: none;
+}
+
+.toc ul li a:hover
+{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/*Sections start hidden*/
+section
+{
+display: none;
+margin-top: 20px;
+padding: 10px;
+background-color: #f4f4f4;
+border-radius: 5px;
+color:black;
+}

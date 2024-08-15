@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
+    <title>GH How To's</title>
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/js-styles.css">
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Site</h1>
+    <h1>Welcome to My GH How To's</h1>
     <p>This is the landing page for my GitHub Pages site.</p>
-
-    <!-- Link to the MBR Rollback page -->
+    
     <nav>
+        <div class="theme-switch-wrapper">
+             <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+          <em>Dark Mode</em>
+        </div>
+    </nav>
+
+    <!-- Pages -->
+    <nav>
+        <div style="align-self: flex-start;">
         <ul>
             <li><a href="pages\MBR%20Rollback.html">MBR Rollback</a></li>
             <li><a href="pages\Adjudication%20Step%20MPCarveout%20Failed">Adjudication Step MPCarveout Failed</a></li>
@@ -19,6 +32,9 @@
             <li><a href="pages\ESIS%20Bill%20Volume%20Report">ESIS Bill Volume Report</a></li>
             <li><a href="pages\Special%20Inventory%20Report">Special Inventory Report</a></li>
         </ul>
+    </div>
     </nav>
+    <script src="js/main.js"></script>
+    <script src="js/toggle.js"></script>
 </body>
 </html>
