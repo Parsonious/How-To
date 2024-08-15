@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function()
         {
             titleDiv.textContent += titleText.charAt(index);
             index++;
-            setTimeout(displayTitle, 100); //this controls the speed of the animation (by pausing the thread?)
+            setTimeout(displayTitle, 50); //this controls the speed of the animation (by pausing the thread?)
         }
     }
 
@@ -24,13 +24,12 @@ document.addEventListener("DOMContentLoaded", function()
     displayTitle();
 
     //Add event listeners to TOC links
-    const tocLinks = document.querySelectorAll(".tock-link");
+    const tocLinks = document.querySelectorAll(".toc-link");
 
     tocLinks.forEach(function(link){
         link.addEventListener("click", function(event){
             event.preventDefault(); //prevent default anchor click behavior (jump to section)
             console.log("click event triggered");
-            alert("click event triggered");
             //Get the target section ID
             const targetID = this.getAttribute("data-target");
             const targetSection = document.getElementById(targetID);
