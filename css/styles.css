@@ -117,6 +117,19 @@ ul {
             display: flex;
             align-items: center;
         }
+        ul li details {
+            margin-bottom: 10px
+        }
+        ul li summary {
+            color: #0066cc;
+                text-decoration: none;
+                cursor: pointer;
+                list-style: none;
+                transition: color 0.3s, text-decoration 0.3s;
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+        }        
 /* Styles for list items */
 li {
     margin-bottom: 10px;
@@ -147,8 +160,11 @@ summary {
     list-style: none;
     transition: color 0.3s, text-decoration 0.3s;
     margin-bottom: 5px;
+    align-items: center;
+    display: flex;
 }
 
+   
 /* Image styles */
 img {
     display: block; /* Ensures the image behaves like a block element */
@@ -223,15 +239,18 @@ a.back-to-top {
     font-size: 14px;
 }
 .img-micro-logo {
+    margin: 0;
     width: 20px;
     height: 20px;
     margin-right: 5px;
 }
 
 .img-micro-i {
+    margin: 0;
     width: 5px;
     height: 15px;
     margin-right: 5px;
+
 }
 .article-container {
     background-color: #f9f9f9;
@@ -324,4 +343,10 @@ a.back-to-top {
 /* Dashed underline for links */
 .dashed-link {
     text-decoration: dashed;
+}
+
+.summary-ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+    list-style-type: none;
 }
