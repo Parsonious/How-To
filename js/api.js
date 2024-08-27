@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get the div element with id="api"
+    // Get the div element with id="bepio"
     var apiElement = document.getElementById('bepio');
 
     if (!apiElement) {
@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Normalize the title for the API request
     var normalizedTitle = encodeURIComponent(titleText);
 
-    // API URL
-    var apiUrl = `https://bepio.net/api/content/${normalizedTitle}`;
+    // API URL with the normalizedTitle as a query parameter
+    var apiUrl = `https://bepio.net?title=${normalizedTitle}`;
 
     // Fetch content from the API
     fetch(apiUrl)
         .then(response => response.text())
         .then(htmlContent => {
-            // Set the API response content back inside the div with id="api"
+            // Set the API response content back inside the div with id="bepio"
             apiElement.innerHTML = htmlContent;
         })
         .catch(error => {
