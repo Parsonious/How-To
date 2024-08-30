@@ -1,29 +1,32 @@
 document.addEventListener('DOMContentLoaded', async function() {
+    var elementId = 'bepio';
     // Get the div element with id="api"
-    var apiElement = document.getElementById('bepio');
-
-    if (!apiElement) {
-        console.error('API element not found');
-        return; // Exit if the API element is not found
-    }
+    var apiElement = document.getElementById(elementId);
 
     // Extract the text content from the div to use as the title
-    var titleText = apiElement.innerText.trim();
-    
+    if ('textContent' in apiElement){
+        titleText = apiElement.textContent.trim();
+    } else {
+        text = apiElement.innerText.trim();
+    }
+
     // Normalize the title for the API request
     var normalizedTitle = encodeURIComponent(titleText);
 
     // API URL
     var apiUrl = `https://bepio.net/api/content/${normalizedTitle}`;
-
-    // Fetch content from the API
-    fetch(apiUrl)
-        .then(response => response.text())
-        .then(htmlContent => {
-            // Set the API response content back inside the div with id="api"
-            apiElement.innerHTML = htmlContent;
-        })
-        .catch(error => {
-            console.error('Error fetching content:', error);
-        });
+    try{
+        // Fetch content from the API async
+        const response = await fetch(apiUrl);
+        //Check if the repsponse is good
+        if(!response.ok){
+            throw new Error('Something Went Wrong');
+        }
+        //Get the text content from the response
+        const htmlContent = await response.text();
+        //set the html content
+        apiElement.innerHTML = htmlContent;
+    } catch (error){
+        console.error('Error fetching content:', error);
+    }
 });
