@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             var contentDiv = document.createElement('div');
             contentDiv.innerHTML = htmlContent;
 
-            // Append the new div to the existing element
-            apiElement.appendChild(contentDiv);
+            // Insert the new div after the apiElement
+            apiElement.parentNode.insertBefore(contentDiv, apiElement.nextSibling);
 
             // Set the spinner's visibility to invisible
             if (spinnerElement) {
