@@ -27,6 +27,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         //set the html content
         apiElement.innerHTML = htmlContent;
     } catch (error){
-        console.error('Error fetching content:', error);
+        console.error('Error fetching contnt:', error);
     }
 });
