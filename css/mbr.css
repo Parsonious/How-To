@@ -1,6 +1,9 @@
-#article-container{
 /* General article styling */
-article {
+#article-container article {
+    all: unset;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #f9f9f9;
     padding: 20px;
     border: 1px solid #ddd;
@@ -12,7 +15,10 @@ article {
 }
 
 /* Styles for headings */
-h1, h2, h3, h4 {
+#article-container article h1, 
+#article-container article h2, 
+#article-container article h3, 
+#article-container article h4 {
     color: #444;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
@@ -25,34 +31,38 @@ h1, h2, h3, h4 {
 }
 
 /* Specific styles for h1 */
-h1 {
+#article-container article h1 {
     font-size: 28px;
     border-bottom: 3px solid #ddd;
 }
 
 /* Specific styles for h2 */
-h2 {
+#article-container article h2 {
     font-size: 22px;
     border-bottom: 2px solid #ddd;
 }
-h3 {
+
+#article-container article h3 {
     font-size: 20px;
     border-bottom: 1px solid #ddd;
 }
-h4 {
+
+#article-container article h4 {
     font-size: 18px;
     border-bottom: 0px;
     padding: 8px 16px;
     background: #f5f5f5;
     border-radius: 8px;
 }
-h5 {
+
+#article-container article h5 {
     color: #666;
     font-size: 16px;
     margin-bottom: 10px;
 }
+
 /* Styles for paragraphs */
-p {
+#article-container article p {
     margin: 5px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -64,8 +74,8 @@ p {
     overflow: hidden;
 }
 
-/*Styles for images inside paragraphs*/
-p img{
+/* Styles for images inside paragraphs */
+#article-container article p img {
     float: left;
     margin-right: 15px;
     border-radius: 10px;
@@ -75,7 +85,7 @@ p img{
 }
 
 /* Table of Contents styles */
-#table-of-contents {
+#article-container #table-of-contents {
     color: #444;
     font-size: 22px;
     border-bottom: 1px solid #ddd;
@@ -88,8 +98,9 @@ p img{
     padding: 10px 20px;
 }
 
-/* Ordered list styles */
-ol, ul {
+/* Ordered and Unordered list styles */
+#article-container article ol, 
+#article-container article ul {
     margin: 5px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -100,49 +111,52 @@ ol, ul {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
 }
+
 /* Nested list styles */
-ul {
+#article-container article ul {
     margin: 10px 0 0 20px;
     list-style-position: inside;
 }
 
-    ul li {
-        margin-bottom: 10px;
-        padding: 3px;
-    }
+#article-container article ul li {
+    margin-bottom: 10px;
+    padding: 3px;
+}
 
-        ul li a {
-            color: #0066cc;
-            text-decoration: none;
-            transition: color 0.3s, text-decoration 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        ul li details {
-            margin-bottom: 10px
-        }
-        ul li summary {
-            color: #0066cc;
-                text-decoration: none;
-                cursor: pointer;
-                list-style: none;
-                transition: color 0.3s, text-decoration 0.3s;
-                margin-bottom: 5px;
-                display: flex;
-                align-items: center;
-        }        
-/* Styles for list items */
-li {
+#article-container article ul li a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+#article-container article ul li details {
     margin-bottom: 10px;
 }
 
-    /* Styles for inline items in lists */
-    li span {
-        margin-right: 5px;
-    }
+#article-container article ul li summary {
+    color: #0066cc;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styles for list items */
+#article-container article li {
+    margin-bottom: 10px;
+}
+
+#article-container article li span {
+    margin-right: 5px;
+}
 
 /* Styles for links */
-a {
+#article-container article a {
     display: inline;
     color: #0066cc;
     text-decoration: none;
@@ -150,11 +164,11 @@ a {
 }
 
 /* Details and summary styles */
-details {
+#article-container article details {
     margin-bottom: 10px;
 }
 
-summary {
+#article-container article summary {
     color: #0066cc;
     text-decoration: none;
     cursor: pointer;
@@ -165,21 +179,19 @@ summary {
     display: flex;
 }
 
-   
 /* Image styles */
-img {
-    display: block; /* Ensures the image behaves like a block element */
-    margin: 20px auto; /* Centers the image horizontally and adds vertical space */
-    border-radius: 20px; /* Rounded edges */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-    max-width: 80%; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
-    width: auto; /* Adjust width */
+#article-container article img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    height: auto;
+    width: auto;
 }
 
-
 /* Styles for horizontal rules */
-hr {
+#article-container article hr {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin: 20px 0;
@@ -189,8 +201,9 @@ hr {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-/*Code block styles*/
-code {
+
+/* Code block styles */
+#article-container article code {
     display: block;
     padding: 15px;
     background-color: #ffffff;
@@ -198,24 +211,23 @@ code {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
     white-space: pre;
-    color: #000; /* Default text color set to black */
+    color: #000;
 }
 
 /* Back to Top Link */
-a.back-to-top {
+#article-container article a.back-to-top {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-    a.back-to-top img {
-        width: 40px;
-        height: 40px;
-    }
-
+#article-container article a.back-to-top img {
+    width: 40px;
+    height: 40px;
+}
 
 /* Flex container for side-by-side sections */
-.flex-container {
+#article-container article .flex-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -224,12 +236,12 @@ a.back-to-top {
 }
 
 /* Flex item styles */
-.flex-item {
+#article-container article .flex-item {
     flex: 1;
 }
 
 /* Styles for tags */
-.tag {
+#article-container article .tag {
     display: inline-block;
     margin: 5px;
     padding: 2px 3px;
@@ -239,32 +251,9 @@ a.back-to-top {
     border-radius: 3px;
     font-size: 14px;
 }
-.img-micro-logo {
-    margin: 0;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
 
-.img-micro-i {
-    margin: 0;
-    width: 5px;
-    height: 15px;
-    margin-right: 5px;
-
-}
-.article-container {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    max-width: 90%;
-    margin: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 /* Flex item image styling */
-.flex-item-image {
+#article-container article .flex-item-image {
     width: auto;
     height: auto;
     border-radius: 10px;
@@ -274,7 +263,7 @@ a.back-to-top {
 }
 
 /* Flex item text styling */
-.flex-item-text {
+#article-container article .flex-item-text {
     margin: 0;
     line-height: 1.6;
     padding: 20px;
@@ -285,8 +274,9 @@ a.back-to-top {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
-/*Flex item code block*/
-.flex-item-code {
+
+/* Flex item code block */
+#article-container article .flex-item-code {
     margin: 5px;
     padding: 20px;
     border: 1px solid #ccc;
@@ -296,59 +286,65 @@ a.back-to-top {
     list-style-type: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
-    display: flex; /* Enable flexbox */
-    align-items: center; /* Center content vertically */
-    overflow: hidden; /* Ensure the content wraps around the floating image */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
+
 /* Image floating left in paragraphs */
-.image-left {
+#article-container article .image-left {
     float: left;
-    margin-right: 15px; /* Adjust as needed for spacing */
-    border-radius: 10px; /* Rounded edges */
-    width: auto; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
+    margin-right: 15px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.image-left-2 {
+
+/* Image floating right in paragraphs */
+#article-container article .image-left-2 {
     float: left;
-    margin-right: 15px; /* Adjust as needed for spacing */
-    border-radius: 10px; /* Rounded edges */
-    width: auto; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
+    margin-right: 15px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: block;
     margin: 20px;
     max-width: 50%;
 }
-.image-half {
-    width: 50%; /* Adjusts the image size relative to its container */
-    max-width: 450px; /* Sets the maximum width the image can grow to */
-    height: auto; /* Maintains the aspect ratio */
-    border-radius: 8px; /* Rounded edges for the image */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Elevation for the image */
+
+/* Image with half width */
+#article-container article .image-half {
+    width: 50%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: block;
     margin: 0 auto;
 }
+
 /* Back to Top container */
-.back-to-top-container {
+#article-container article .back-to-top-container {
     text-align: center;
     margin-top: 20px;
 }
 
 /* Back to Top link */
-.back-to-top-link img {
+#article-container article .back-to-top-link img {
     width: 40px;
     height: 40px;
 }
 
 /* Dashed underline for links */
-.dashed-link {
+#article-container article .dashed-link {
     text-decoration: dashed;
 }
 
-.summary-ul {
+/* Summary list */
+#article-container article .summary-ul {
     margin: 10px 0 0 20px;
     padding: 0;
     list-style-type: none;
-}
 }
