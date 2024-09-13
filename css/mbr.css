@@ -1,6 +1,5 @@
 /* General article styling */
 #article-container article {
-    all: unset;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,6 +11,7 @@
     max-width: 90%;
     margin: auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
 }
 
 /* Styles for headings */
@@ -28,6 +28,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     text-align: center;
+    display: block;
 }
 
 /* Specific styles for h1 */
@@ -72,6 +73,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
     overflow: hidden;
+    display: block;
 }
 
 /* Styles for images inside paragraphs */
@@ -187,7 +189,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 80%;
     height: auto;
-    width: auto;
 }
 
 /* Styles for horizontal rules */
@@ -301,19 +302,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Image floating right in paragraphs */
-#article-container article .image-left-2 {
-    float: left;
-    margin-right: 15px;
-    border-radius: 10px;
-    width: auto;
-    height: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: block;
-    margin: 20px;
-    max-width: 50%;
-}
-
 /* Image with half width */
 #article-container article .image-half {
     width: 50%;
@@ -329,12 +317,6 @@
 #article-container article .back-to-top-container {
     text-align: center;
     margin-top: 20px;
-}
-
-/* Back to Top link */
-#article-container article .back-to-top-link img {
-    width: 40px;
-    height: 40px;
 }
 
 /* Dashed underline for links */
