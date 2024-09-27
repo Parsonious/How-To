@@ -1,0 +1,332 @@
+/* General article styling */
+#article-container article {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    max-width: 90%;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Styles for headings */
+#article-container article h1, 
+#article-container article h2, 
+#article-container article h3, 
+#article-container article h4 {
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+}
+
+/* Specific styles for h1 */
+#article-container article h1 {
+    font-size: 28px;
+    border-bottom: 3px solid #ddd;
+}
+
+/* Specific styles for h2 */
+#article-container article h2 {
+    font-size: 22px;
+    border-bottom: 2px solid #ddd;
+}
+
+#article-container article h3 {
+    font-size: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#article-container article h4 {
+    font-size: 18px;
+    border-bottom: 0px;
+    padding: 8px 16px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+#article-container article h5 {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Styles for paragraphs */
+#article-container article p {
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    display: block;
+}
+
+/* Styles for images inside paragraphs */
+#article-container article p img {
+    float: left;
+    margin-right: 15px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Table of Contents styles */
+#article-container #table-of-contents {
+    color: #444;
+    font-size: 22px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+/* Ordered and Unordered list styles */
+#article-container article ol, 
+#article-container article ul {
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Nested list styles */
+#article-container article ul {
+    margin: 10px 0 0 20px;
+    list-style-position: inside;
+}
+
+#article-container article ul li {
+    margin-bottom: 10px;
+    padding: 3px;
+}
+
+#article-container article ul li a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+#article-container article ul li details {
+    margin-bottom: 10px;
+}
+
+#article-container article ul li summary {
+    color: #0066cc;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styles for list items */
+#article-container article li {
+    margin-bottom: 10px;
+}
+
+#article-container article li span {
+    margin-right: 5px;
+}
+
+/* Styles for links */
+#article-container article a {
+    display: inline;
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Details and summary styles */
+#article-container article details {
+    margin-bottom: 10px;
+}
+
+#article-container article summary {
+    color: #0066cc;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.3s, text-decoration 0.3s;
+    margin-bottom: 5px;
+    align-items: center;
+    display: flex;
+}
+
+/* Image styles */
+#article-container article img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    height: auto;
+}
+
+/* Styles for horizontal rules */
+#article-container article hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Code block styles */
+#article-container article code {
+    display: block;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    white-space: pre;
+    color: #000;
+}
+
+/* Back to Top Link */
+#article-container article a.back-to-top {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#article-container article a.back-to-top img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Flex container for side-by-side sections */
+#article-container article .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Flex item styles */
+#article-container article .flex-item {
+    flex: 1;
+}
+
+/* Styles for tags */
+#article-container article .tag {
+    display: inline-block;
+    margin: 5px;
+    padding: 2px 3px;
+    background-color: rgba(224, 224, 224, 0.411);
+    color: #333;
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* Flex item image styling */
+#article-container article .flex-item-image {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 50%;
+    margin-right: 15px;
+}
+
+/* Flex item text styling */
+#article-container article .flex-item-text {
+    margin: 0;
+    line-height: 1.6;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Flex item code block */
+#article-container article .flex-item-code {
+    margin: 5px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    color: #555;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Image floating left in paragraphs */
+#article-container article .image-left {
+    float: left;
+    margin-right: 15px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Image with half width */
+#article-container article .image-half {
+    width: 50%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Back to Top container */
+#article-container article .back-to-top-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Dashed underline for links */
+#article-container article .dashed-link {
+    text-decoration: dashed;
+}
+
+/* Summary list */
+#article-container article .summary-ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+    list-style-type: none;
+}
