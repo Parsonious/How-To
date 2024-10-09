@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whielist Compensable Body Part</title>
+    <link rel="stylesheet" href="../css/mbr.css">
+    <link href="../css/prism.css" rel="stylesheet" />
+</head>
+</head>
+
+<body>
+    <article class="article-container">
+        <a id="top"></a>
+        <h1>How To: Whitelist Compensable Body Part</h1>
+
+        <h2 id="table-of-contents">Table Of Contents</h2>
+
+        <ol>
+            <li>
+                <a href="#brief-description-of-this-task">
+                    <span>&#9432;</span>
+                    Brief Description of This Task
+                </a>
+            </li>
+            <li>
+                <a href="#task-prerequisites">
+                    <span>&#10003;</span>
+                    Task Prerequisites
+                </a>
+            </li>
+            <li>
+                <details style="margin-bottom: 10px;">
+                    <summary>
+                        Sample Tickets
+                    </summary>
+                    <ul style="
+                    margin: 10px 0 0 20px;
+                    padding: 0;
+                    list-style-type: none;" id="sample-tickets">
+                        <li>
+                            <!-- <img src="../Images/CIQ_i.png" class="img-micro-i" alt="CIQ I"> -->
+                            <a href="https://compiqsolutions.zendesk.com/agent/tickets/88485">88484</a>
+                        </li>
+                        <li>
+                            <!-- <img src="../Images/CIQ_i.png" class="img-micro-i" alt="CIQ I"> -->
+                            <a href="https://compiqsolutions.zendesk.com/agent/tickets/88988">88988</a>
+                        </li>
+                        <li>
+                            <!-- <img src="../Images/CIQ_i.png" class="img-micro-i" alt="CIQ I"> -->
+                            <a href="https://compiqsolutions.zendesk.com/agent/tickets/88470">88740</a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <a href="#keywords-to-look-for">
+                    <span>&#128273;</span>
+                    Keywords To Look For
+                </a>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        &#128736;</span>
+                        Steps To Working These Tickets
+                    </summary>
+                    <ul>
+                        <li>
+                            <a href="#identify-the-ticket">
+                                <span>&#128269;</span>
+                                Identify The Ticket
+                            </a>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>
+                                    <span>&#9997;</span>
+                                    Fill Out Ticket Form
+                                </summary>
+                                <ul>
+                                    <li>
+                                        <a href="#section-1">
+                                            <span>&#128221;</span>
+                                            Section 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#section-2">
+                                            <span>&#128221;</span>
+                                            Section 2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#section-3">
+                                            <span>&#128221;</span>
+                                            Section 3
+                                        </a>
+                                    </li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <a href="#write-your-sql">
+                                <span style="margin-right: 5px;">&#128736;</span>
+                                Write Your SQL
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <a href="#update-your-ticket">
+                                <span>&#128190;</span>
+                                Update Your Ticket
+                            </a>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h2 id="brief-description-of-this-task">Brief Description of This Task</h2>
+        <p>This is a new type of MBR Whitelisting that requires Technical Support to whitelist bills in order to allow them to export on the MBR.</p>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2 id="task-prerequisites">Task Prerequisites</h2>
+                <ul>
+                    <li><span>&#10003;</span> Access to GalantUT SQL Server</li>
+                    <li><span>&#10003;</span> Read/Write Access to the ESIS DB on GalantUT</li>
+                    <li><span>&#10003;</span> Store Procedure execution privileges on ESIS DB</li>
+                    <li><span>&#10003;</span> DCNs requested for Rollback</li>
+                    <li><span>&#10003;</span> Verification that all listed DCNs need to export with MSG TBR11</li>
+                </ul>
+            </div>
+
+            <div class="flex-item">
+                <h2 id="keywords-to-look-for">Keywords To Look For</h2>
+                <ul>
+                    <li class="tag">MBR Validation</li>
+                    <li class="tag">Whitelisting</li>
+                    <li class="tag">Copmensable Body Part</li>
+                    <li class="tag">TBR11</li>
+                </ul>
+            </div>
+        </div>
+
+        </div>
+        <hr>
+        <h3 id="identify-the-ticket">
+            Identify The Ticket
+        </h3>
+
+        <p>
+            <img src="../Images/MBR Rollback/mbr-title.png"
+                 alt="Ticket Title"
+                 title="Ticket Title">
+            Easy identification of these tickets can be made by either the title of the ticket
+            and or the keywords that can be easily found in the ticket <b title="First ticket comment" id="opening-term">opening<sup><a href="#opening-definition" style="text-decoration: dashed;">*</a></sup></b>.
+        </p>
+
+        <hr>
+
+        <h3 id="fill-out-ticket-form">Fill Out Ticket Form</h3>
+
+        <p>
+            As always once the ticket has been identified the ticket forms we as the Technical Support Team are responsible for filling out.
+            For the ease of discussion and for your reference a stretched version of this form from our sample ticket
+            (<a href="https://compiqsolutions.zendesk.com/agent/tickets/88485" style="color: #0066cc; text-decoration: none;">88485</a>)
+            can be seen here. Note that the fields with an asterisk ( * ) are required to be filled out prior to a ticket being marked as <i>Solved</i>.
+            These fields can be broken out into <b title="Technical Support's responsibility" id="primary-term">Primary Fields<sup><a href="#primary-definition" style="text-decoration:dashed">*</a></sup></b>
+            and <b title="Client's responsibility" id="secondary-term">Secondary Fields<sup><a href="#secondary-definition" style="text-decoration:dashed">*</a></sup></b>.
+
+            <img src="../Images/mbr-TFW.png"
+                 alt="Ticket Forms Whole"
+                 title="Ticket Fields Full">
+            <hr>
+
+            <!-- Back to Top Link with Image -->
+            <div class="back-to-top-container">
+                <a href="#top" class="back-to-top-link">
+                    <img src="../Images/Icons/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
+                </a>
+            </div>
+        </p>
+        <h4 id="section-1">Section 1</h4>
+
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img class="image-half" src="../Images/MBR Rollback/mbr-TFL.png" alt="Ticket Fields Left" title="Ticket Form Left">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5 style="
+                color: #666;
+                font-size: 16px;
+                margin-bottom: 10px;
+            ">
+                    Primary Fields
+                </h5>
+                <ul>
+                    <li style="padding-left:5px;">Account Manager - Michael Marshall</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <h4 id="section-2">Section 2</h4>
+
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img class="image-half" src="../Images//MBR Rollback/mbr-TFM.png" alt="Ticket Fields Middle Example" title="The middle section of the Ticket Fields screenshot">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5>Primary Fields</h5>
+                <ul>
+                    <li style="padding-left:5px;">Assignee - Whoever is working the ticket</li>
+                    <li style="padding-left:5px;">Client Name - ESIS</li>
+                    <li style="padding-left:5px;">Classification - Technical Support</li>
+                </ul>
+                <h5>Secondary Field</h5>
+                <ul>
+                    <li style="padding-left: 5px;">Email Address - Whoever opened the ticket</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <h4 id="section-3">Section 3</h4>
+        <div style="
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        ">
+            <div style="
+                flex: 1;
+                max-width: 50%;
+            ">
+                <img class="image-half" src="../Images//MBR Rollback/mbr-TFR.png" alt="Ticket Fields Right Example" title="Ticket Form Right">
+            </div>
+            <div style="
+                flex: 1;
+                padding-left: 20px;
+                max-width: 50%;
+            ">
+                <h5>Primary Fields</h5>
+                <ul>
+                    <li style="padding-left: 5px;">Client\ClientID - ESIS</li>
+                    <li style="padding-left: 5px;">Cost Center - ESIS</li>
+                    <li style="padding-left: 5px;">Support Category - ESIS - MBR</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <!-- Back to Top Link with Image -->
+        <div class="back-to-top-container">
+            <a href="#top" class="back-to-top-link">
+                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
+            </a>
+        </div>
+        <h3 id="write-your-sql">Write Your SQL</h3>
+
+   <pre><code class="language-sql">
+                USE ESIS;
+
+                DECLARE
+                @UserName VARCHAR(20) = 'MBR-Rollback',
+                @Reason VARCHAR(50) = 'Rollback Requested Ticket ',
+                @Ticket VARCHAR(12) = --add the ticket number here,
+                @DCNLIST DCNLIST;
+                
+                -- Populate @DCNLIST with the desired DCNs
+                INSERT INTO @DCNLIST (DCN)
+                SELECT documentcontrolnumber FROM bills
+                WHERE documentcontrolnumber IN ( ); -- Add DCNs as comma separated list
+                
+                -- Insert DCNs from @DCNLIST into MBRSKipCompensableBodyPart
+                INSERT INTO MBRSKipCompensableBodyPart (DCN)
+                SELECT DCN FROM @DCNLIST;
+                
+                -- Log the rollback for each DCN
+                INSERT INTO CEBRSLog (DCN, action, [UserName], DateTimeStamp)
+                SELECT DCN, @Reason + @Ticket + ' Rolling Back from MBR tables', @UserName, GETDATE() FROM @DCNLIST;
+                
+                -- Execute the rollback stored procedure with @DCNLIST
+                EXEC [MBRRollBackDCNs] @DCNLIST;
+                </code></pre>
+
+            <!-- Text Block -->
+            <div style="
+        flex: 1;
+        max-width: 50%;
+    ">
+                <p>
+                    Pay special attention to the values that need to be updated when you run your sql.
+                    Both the Ticket variable (@Ticket) and the DCNs added to the DCN list need to be updated.
+                    Additionally, ensure that the DCNs are added as a comma separated list before attempting to run the script.
+                </p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3 id="update-your-ticket">Update Your Ticket</h3>
+            <p>
+                Finally, you will need to notify the ticket opener that the DCNs have been unstuck as requested, an example of which can be seen here.
+                It is perfectly acceptable to mark these tickets as <i>solved</i> immediately after verifying the Rollback was successful.
+            </p>
+        </div>
+
+        <h5>Definitions</h5>
+        <div style="font-size: 0.9em; color: #555; margin-top: 20px;">
+            <p id="primary-definition"><sup>*</sup> <b>Primary Fields</b>: Fields that the Technical Support team is primarily responsible for filling out. <a href="#primary-term" style="text-decoration: none;">[Back]</a></p>
+            <p id="secondary-definition"><sup>*</sup> <b>Secondary Fields</b>: Fields that the Ticket Opener is primarily responsible for filling out but on occasion Technical Support might need to ensure is filled out. <a href="#secondary-term" style="text-decoration: none;">[Back]</a></p>
+            <p id="opening-definition"><sup>*</sup> <b>Opening</b>: The first comment made in a ticket by whoever created (or opened) the ticket.<a href="#opening-term" style="text-decoration: none;">[Back]</a></p>
+        </div>
+        <!-- Back to Top Link with Image -->
+        <div class="back-to-top-container">
+            <a href="#top" class="back-to-top-link">
+                <img src="../Images/logo_tiny_no_background.png" alt="Back to Top" title="Back to Top">
+            </a>
+        </div>
+        <script src="../js/prism.js"></script>
+    </article>
+</body>
+
+</html>
