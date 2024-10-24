@@ -1,6 +1,6 @@
-(function() {
+(function () {
     // Wait for the DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Header and sub-nav wrapper creation
         var header = document.querySelector('.header');
         var subNav = document.querySelector('.sub-nav');
@@ -35,35 +35,35 @@
                 }
             });
         }
-                // ToC Toggle Functionality
-                const toc = document.querySelector('.table-of-contents.article-sidebar');
-                const tocToggle = toc.querySelector('.collapsible-sidebar-title'); // Clicking the title toggles the ToC
-                const tocContent = toc.querySelector('.collapsible-sidebar-body.toc-content');
-        
-                if (tocToggle && tocContent) {
-                    tocToggle.addEventListener('click', function() {
-                        const isExpanded = toc.classList.contains('expanded');
-                        if (isExpanded) {
-                            toc.classList.remove('expanded');
-                            toc.classList.add('collapsed');
-                        } else {
-                            toc.classList.remove('collapsed');
-                            toc.classList.add('expanded');
-                        }
-                    });
-                }
-        
-                // Sub-Toc Toggle Functionality
-            const tocToggleButtons = toc.querySelectorAll('.toc-toggle-button');
+        // ToC Toggle Functionality
+        const toc = document.querySelector('.table-of-contents.article-sidebar');
+        const tocToggle = toc.querySelector('.collapsible-sidebar-title'); // Clicking the title toggles the ToC
+        const tocContent = toc.querySelector('.collapsible-sidebar-body.toc-content');
 
-        tocToggleButtons.forEach(function(button, index) {
+        if (tocToggle && tocContent) {
+            tocToggle.addEventListener('click', function () {
+                const isExpanded = toc.classList.contains('expanded');
+                if (isExpanded) {
+                    toc.classList.remove('expanded');
+                    toc.classList.add('collapsed');
+                } else {
+                    toc.classList.remove('collapsed');
+                    toc.classList.add('expanded');
+                }
+            });
+        }
+
+        // Sub-Toc Toggle Functionality
+        const tocToggleButtons = toc.querySelectorAll('.toc-toggle-button');
+
+        tocToggleButtons.forEach(function (button, index) {
             // Initialize the button's state based on the 'aria-expanded' attribute
             const isInitiallyExpanded = button.getAttribute('aria-expanded') === 'true';
             button.classList.toggle('expanded', isInitiallyExpanded);
             button.classList.toggle('collapsed', !isInitiallyExpanded);
 
             // Add click event listener to each toggle button
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Determine the current state
                 const isExpanded = button.getAttribute('aria-expanded') === 'true';
                 console.log(`Button ${index + 1} clicked. Current state: ${isExpanded ? 'expanded' : 'collapsed'}.`);
@@ -96,19 +96,19 @@
                 controlledList.classList.toggle('expanded', !isExpanded);
                 console.log(`Sub-toc list '${targetClass}' is now ${!isExpanded ? 'expanded' : 'collapsed'}.`);
             });
-                        });
-                
+        });
 
 
 
-                const clearButton = document.querySelector('.clear-button');
-                const searchInput = document.querySelector('.search input[type="search"]');
-                clearButton.addEventListener('click', function() {
-                    searchInput.value = '';
-                    searchInput.focus();
-                    // The clear button will automatically hide due to CSS since the input is now empty
-                });
-            });
-            
-            Prism.highlightAll();
+
+        const clearButton = document.querySelector('.clear-button');
+        const searchInput = document.querySelector('.search input[type="search"]');
+        clearButton.addEventListener('click', function () {
+            searchInput.value = '';
+            searchInput.focus();
+            // The clear button will automatically hide due to CSS since the input is now empty
+        });
+    });
+
+    Prism.highlightAll();
 })();
