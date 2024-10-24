@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Warm Neon SVG Design</title>
+    <style>
+        /* ================================
+           Global Styles
+           ================================ */
+        body {
+            background-color: #2c2c2c; /* Darker Background for Warm Glow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            position: relative; /* To contain absolute elements */
+        }
+
+        /* ================================
+           Neon Frame Styles
+           ================================ */
+        .neon-frame {
+            width: 400px;
+            height: 700px;
+            background: #1b1b1b;
+            border: 5px solid #ffcc66; /* Warm Border Color */
+            border-radius: 30px;
+            box-shadow: 0 0 20px #ffcc66, 0 0 60px #ffcc66, 0 0 100px #ffcc66;
+            position: relative; /* Positioned above background-gradient */
+            z-index: 1; /* Above background-gradient */
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ================================
+           Icons Container
+           ================================ */
+        .icons-container {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /* ================================
+           Icon Group Styles
+           ================================ */
+        .icon-group {
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .icon-group:hover .icon-svg {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px #ffcc66) drop-shadow(0 0 20px #ffcc66);
+        }
+
+        /* Diamond-Shaped Border Around Icon and Title */
+        .diamond-border {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            border: 2px solid #ffcc66;
+            transform: rotate(45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        /* Remove the rounded border by eliminating ::before */
+        /* Previously, ::before was adding another rotated border */
+        /* Now, only the main diamond-border remains */
+
+        /* Central Animated Gradient for Icons */
+        .icon-center-gradient {
+            fill: url(#centerGradient);
+            opacity: 0.7;
+            animation: centerPulse 10s infinite alternate;
+        }
+
+        @keyframes centerPulse {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* ================================
+           Icon SVG Styles
+           ================================ */
+        .icon-svg {
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        /* ================================
+           Content Overlay Styles
+           ================================ */
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(27, 27, 27, 0.95);
+            color: #ffcc66;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            text-align: center;
+            z-index: 10; /* Above everything else */
+        }
+
+        .content-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay-content {
+            position: relative;
+            max-width: 80%;
+            background: #333;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #ffcc66;
+        }
+
+        .overlay-content h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            text-shadow: 0 0 10px #ffcc66;
+            color: #fff;
+        }
+
+        .overlay-content p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* Close Button Styles */
+        .close-button {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ffcc66;
+            color: #1b1b1b;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 0 5px #ffcc66;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .close-button:hover {
+            background-color: #fff;
+            color: #ffcc66;
+        }
+
+        /* ================================
+           Persistent RGB Curved Lines Styles
+           ================================ */
+        .rgb-line {
+            stroke: url(#rgbGradient);
+            stroke-width: 2;
+            fill: none;
+            filter: url(#glowFilter);
+            opacity: 0.7;
+            /* Adding animation for bulging pulse */
+            animation: bulgePulse 8s infinite;
+        }
+
+        @keyframes bulgePulse {
+            0% {
+                stroke-dasharray: 0, 1000;
+                stroke: url(#rgbGradient);
+                opacity: 0.7;
+                stroke-width: 2;
+            }
+            50% {
+                stroke-dasharray: 1000, 0;
+                stroke: url(#rgbGradientPulse);
+                opacity: 1;
+                stroke-width: 4;
+            }
+            100% {
+                stroke-dasharray: 0, 1000;
+                stroke: url(#rgbGradient);
+                opacity: 0.7;
+                stroke-width: 2;
+            }
+        }
+
+        /* Glow Filter */
+        .glow {
+            filter: url(#glowFilter);
+        }
+
+        /* ================================
+           Responsive Design
+           ================================ */
+        @media (max-width: 500px) {
+            .neon-frame {
+                width: 300px;
+                height: 600px;
+            }
+
+            .diamond-border {
+                width: 80px;
+                height: 80px;
+            }
+
+            .overlay-content h2 {
+                font-size: 20px;
+            }
+
+            .overlay-content p {
+                font-size: 16px;
+            }
+
+            /* Adjust icons layout for smaller screens */
+            .icons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Neon Frame Container -->
+    <div class="neon-frame">
+        <div class="svg-container">
+            <!-- SVG Definitions -->
+            <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gradient for RGB Lines -->
+                    <linearGradient id="rgbGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ffcc66; stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#ff9966; stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ffcc66; stop-opacity:1" />
+                    </linearGradient>
+
+                    <!-- Gradient for Pulsing RGB Lines -->
+                    <linearGradient id="rgbGradientPulse" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ffe680; stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#ffb84d; stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ffe680; stop-opacity:1" />
+                    </linearGradient>
+
+                    <!-- Glow Filter -->
+                    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <!-- Central Gradient for Icons -->
+                    <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:rgb(255,204,102); stop-opacity:0" />
+                    </radialGradient>
+                </defs>
+            </svg>
+
+            <!-- Persistent Interconnecting Curved RGB Lines -->
+            <svg class="interconnecting-lines" width="100%" height="100%" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
+                <!-- From Task Prerequisites to Sample Tickets -->
+                <path class="rgb-line" d="M100,150 Q200,50 300,150" />
+
+                <!-- From Task Prerequisites to Keywords -->
+                <path class="rgb-line" d="M100,150 Q75,275 100,400" />
+
+                <!-- From Sample Tickets to Fill Out Ticket Forms -->
+                <path class="rgb-line" d="M300,150 Q325,275 300,400" />
+
+                <!-- From Keywords to Fill Out Ticket Forms -->
+                <path class="rgb-line" d="M100,400 Q200,500 300,400" />
+            </svg>
+
+            <!-- Icons Container -->
+            <div class="icons-container">
+                <!-- Task Prerequisites Icon (Checklist) -->
+                <div id="task-prerequisites" class="icon-group" tabindex="0" aria-label="Task Prerequisites">
+                    <div class="diamond-border">
+                        <!-- Checklist Icon from Font Awesome -->
+                        <svg class="icon-svg" viewBox="0 0 512 512">
+                            <path fill="#ffcc66" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM226.74 352.74l184-184c9.373-9.373 9.373-24.569 0-33.941l-22.627-22.627c-9.373-9.373-24.569-9.373-33.941 0L216 258.118l-65.657-65.657c-9.373-9.373-24.569-9.373-33.941 0L127.1 190.1c-9.373 9.373-9.373 24.569 0 33.941l90.303 90.303c9.373 9.373 24.569 9.373 33.941 0z"/>
+                        </svg>
+                    </div>
+                    <!-- Central Gradient -->
+                    <svg width="0" height="0">
+                        <circle class="icon-center-gradient" cx="0" cy="0" r="5" />
+                    </svg>
+                    <div class="icon-title">Task Prerequisites</div>
+                </div>
+
+                <!-- Sample Tickets Icon -->
+                <div id="sample-tickets" class="icon-group" tabindex="0" aria-label="Sample Tickets">
+                    <div class="diamond-border">
+                        <!-- Ticket Icon from Font Awesome -->
+                        <svg class="icon-svg" viewBox="0 0 576 512">
+                            <path fill="#ffcc66" d="M528 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM288 224c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm96 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zM192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z"/>
+                        </svg>
+                    </div>
+                    <!-- Central Gradient -->
+                    <svg width="0" height="0">
+                        <circle class="icon-center-gradient" cx="0" cy="0" r="5" />
+                    </svg>
+                    <div class="icon-title">Sample Tickets</div>
+                </div>
+
+                <!-- Keywords To Look For Icon -->
+                <div id="keywords-to-look-for" class="icon-group" tabindex="0" aria-label="Keywords To Look For">
+                    <div class="diamond-border">
+                        <!-- Magnifying Glass Icon from Font Awesome -->
+                        <svg class="icon-svg" viewBox="0 0 512 512">
+                            <path fill="#ffcc66" d="M505 442.7L405.3 343c28.4-34.9 45.7-79.5 45.7-128C451 96.5 354.5 0 224.5 0S-2 96.5-2 215.5 96.5 431 224.5 431c48.5 0 93.1-17.3 128-45.7l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 0-34zM224.5 368c-88.4 0-160-71.6-160-160S136.1 48 224.5 48 384.5 119.6 384.5 208s-71.6 160-160 160z"/>
+                        </svg>
+                    </div>
+                    <!-- Central Gradient -->
+                    <svg width="0" height="0">
+                        <circle class="icon-center-gradient" cx="0" cy="0" r="5" />
+                    </svg>
+                    <div class="icon-title">Keywords To Look For</div>
+                </div>
+
+                <!-- Fill Out Ticket Forms Icon -->
+                <div id="fill-out-ticket-forms" class="icon-group" tabindex="0" aria-label="Fill Out Ticket Forms">
+                    <div class="diamond-border">
+                        <!-- Form Icon from Font Awesome -->
+                        <svg class="icon-svg" viewBox="0 0 512 512">
+                            <path fill="#ffcc66" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zM160 432H96v-16h64v16zm0-48H96v-16h64v16zm0-48H96v-16h64v16zm0-48H96v-16h64v16zm0-48H96v-16h64v16z"/>
+                        </svg>
+                    </div>
+                    <!-- Central Gradient -->
+                    <svg width="0" height="0">
+                        <circle class="icon-center-gradient" cx="0" cy="0" r="5" />
+                    </svg>
+                    <div class="icon-title">Fill Out Ticket Forms</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Overlays for Each Section -->
+        <div class="content-overlay" id="overlay-task-prerequisites">
+            <div class="overlay-content">
+                <button class="close-button">&times;</button>
+                <div>
+                    <h2>Task Prerequisites</h2>
+                    <p>Ensure you have Read and Write privileges on the GalantUT.dbo.ESIS database. Provide the Examiner Code for any Examiner that needs to be updated.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-overlay" id="overlay-sample-tickets">
+            <div class="overlay-content">
+                <button class="close-button">&times;</button>
+                <div>
+                    <h2>Sample Tickets</h2>
+                    <p>Here are some sample tickets you can refer to:</p>
+                    <ul>
+                        <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/78546" target="_blank" style="color: #ffcc66;">78546</a></li>
+                        <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/67158" target="_blank" style="color: #ffcc66;">67158</a></li>
+                        <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/99643" target="_blank" style="color: #ffcc66;">99643</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-overlay" id="overlay-keywords-to-look-for">
+            <div class="overlay-content">
+                <button class="close-button">&times;</button>
+                <div>
+                    <h2>Keywords To Look For</h2>
+                    <p>Key terms to identify relevant issues:</p>
+                    <ul>
+                        <li>EMIT Add Roles To User</li>
+                        <li>Operations Queues</li>
+                        <li>Internal Queues</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-overlay" id="overlay-fill-out-ticket-forms">
+            <div class="overlay-content">
+                <button class="close-button">&times;</button>
+                <div>
+                    <h2>Fill Out Ticket Forms</h2>
+                    <p>Complete the following sections to submit a ticket:</p>
+                    <ul>
+                        <li><strong>Section 1:</strong> Provide your details.</li>
+                        <li><strong>Section 2:</strong> Describe the issue.</li>
+                        <li><strong>Section 3:</strong> Add any additional information.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript for Interactivity and Animation -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select all icon groups
+                const iconGroups = document.querySelectorAll('.icon-group');
+                const overlays = document.querySelectorAll('.content-overlay');
+                const closeButtons = document.querySelectorAll('.close-button');
+
+                // Function to hide all overlays and reset icons
+                function hideAllOverlays() {
+                    overlays.forEach(overlay => {
+                        overlay.classList.remove('active');
+                    });
+                    iconGroups.forEach(group => {
+                        group.classList.remove('active');
+                        group.style.transform = 'translateX(0)';
+                        group.style.opacity = '1';
+                    });
+                }
+
+                // Add event listeners to each icon group
+                iconGroups.forEach(iconGroup => {
+                    iconGroup.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent event bubbling
+                        hideAllOverlays();
+                        iconGroup.classList.add('active'); // Mark the clicked icon as active
+
+                        const parentId = iconGroup.id;
+                        const overlay = document.getElementById(`overlay-${parentId}`);
+                        if (overlay) {
+                            overlay.classList.add('active');
+                        }
+
+                        // Slide other icons out of the way
+                        iconGroups.forEach(otherGroup => {
+                            if (otherGroup !== iconGroup) {
+                                otherGroup.style.transform = 'translateX(150px)';
+                                otherGroup.style.opacity = '0.3';
+                            }
+                        });
+                    });
+
+                    // Allow keyboard navigation (Enter or Space key)
+                    iconGroup.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            iconGroup.click();
+                        }
+                    });
+                });
+
+                // Add event listeners to close buttons
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        hideAllOverlays();
+                    });
+                });
+
+                // Click outside to close overlays and reset icons
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.neon-frame')) {
+                        hideAllOverlays();
+                    }
+                });
+
+                // Prevent click inside overlay content from closing
+                overlays.forEach(overlay => {
+                    overlay.querySelector('.overlay-content').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                });
+
+                // Allow closing overlay with 'Escape' key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        hideAllOverlays();
+                    }
+                });
+
+                // Fade in the neon frame when it enters the viewport using Intersection Observer
+                const neonFrame = document.querySelector('.neon-frame');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            neonFrame.style.opacity = 1;
+                            observer.unobserve(neonFrame);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(neonFrame);
+            });
+        </script>
+
+    </body>
+</html>
