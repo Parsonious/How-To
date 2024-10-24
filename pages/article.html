@@ -1345,7 +1345,6 @@
     color:#eec83c;
   }
   
-  text-decoration:none;
   
   .c-admin-center-1aoGa{
     height:44px;
@@ -2852,6 +2851,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="Only visible to agents and admins">
                 <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"></rect>
                 <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"></path>
+                
               </svg>
             
           </h1>
@@ -2958,37 +2958,95 @@
                 </nav>
                 
               <h2 id="brief-description-of-this-task">Brief Description of This Task</h2>
-  <p>Users in EMIT require Technical Support intervention in order to access more than the basic Examiner Queue.
-  This task involves running a SQL Select statement and a series of Insert statements in order to provide the specified EMIT User(s) with the requested access level. 
-  While originally development was intended to be made to allow ESIS to perform this task themselves, EMIT can be buggy at times. This can be due in part to its older framework so it
-  remains likely that this task will continue to be a required Technical Support task for a while yet.</p>
-  <h2 id="task-prerequisites">Task Prerequisites</h2>
-    <ul>
-        <li>Read and Write privileges on the GalantUT.dbo.ESIS database.</li>
-        <li>The ticket Opener must provide the Examiner Code for any Examiner that needs to be updated</li>
-    </ul>
+          <p>Users in EMIT require Technical Support intervention in order to access more than the basic Examiner Queue.
+          This task involves running a SQL Select statement and a series of Insert statements in order to provide the specified EMIT User(s) with the requested access level. 
+          While originally development was intended to be made to allow ESIS to perform this task themselves, EMIT can be buggy at times. This can be due in part to its older framework so it
+          remains likely that this task will continue to be a required Technical Support task for a while yet.</p>
+          <h2 id="task-prerequisites">Task Prerequisites</h2>
+            <ul>
+                <li>Read and Write privileges on the GalantUT.dbo.ESIS database.</li>
+                <li>The ticket Opener must provide the Examiner Code for any Examiner that needs to be updated</li>
+            </ul>
 
-  <h3 id="sample-tickets">Sample Tickets</h3>
-  <ul class="sample-tickets">
-  <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/78546">78546</a></li>
-  <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/67158">67158</a></li>
-  <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/99643">99643</a></li>
-  </ul>
-  
-  <div class="keywords-to-look-for">
-  <h3 id="keywords-to-look-for">Keywords To Look For</h3>
-  <ul>
-  <li>EMIT Add Roles To User</li>
-  <li>Operations Queues</li>
-  <li>Internal Queues</li>
-  </ul>
-  </div>
+          <h3 id="sample-tickets">Sample Tickets</h3>
+          <ul class="sample-tickets">
+          <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/78546">78546</a></li>
+          <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/67158">67158</a></li>
+          <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/99643">99643</a></li>
+          </ul>
+          
+          <div class="keywords-to-look-for">
+          <h3 id="keywords-to-look-for">Keywords To Look For</h3>
+          <ul>
+          <li>EMIT Add Roles To User</li>
+          <li>Operations Queues</li>
+          <li>Internal Queues</li>
+          </ul>
+          </div>
 
-  <hr style="color: #1e293a;">
-  
-  <h2 id="identify-the-ticket">Identify The Ticket</h2>
-  <div
-            
+          <hr style="color: #1e293a;">
+          
+          <h2 id="identify-the-ticket">Identify The Ticket</h2>
+          <div>
+            <p>Identifying these tickets can be quite simple. The title of the ticket typically falls within the range of the titles found in the linked sample tickets. 
+              For instance: "EMIT - User Needs Access To Operations Queues" as seen in ticket number 99463 indicates that the EMIT user does not currently have access to 
+              the mentioned queue and needs access granted by a member of the Technical Services team.</p>
+          </div>
+          <hr>
+          <h2 id="write-your-sql">Writing Your Sql</h2>
+          <div>
+              <p>First you want to identify what roles already exist under the given user. This can be accomplished with the following SQL script:</p>
+              <pre><code class="language-sql">USE ESIS
+SELECT * FROM 
+portal.ExaminerRole ER join portal.Role R
+	on ER.RoleID = R.RoleID
+Join portal.Examiner E
+	on E.ExaminerID = ER.ExaminerID
+Join portal.Login L
+	on E.LoginID = L.LoginID
+Where E.ExaminerCode = '' --take out hyphen
+order by L.FirstName
+              </code></pre>
+              <p>Once you've identified the roles that are present, you will need to take note of the ExaminerID column that is present in this original Select statement. That is the ID used for the rest of the task.</p>
+              <h4>Roles Needed For Individual Queues</h4>
+              <div class="stacked-list">
+              <ul>Internal Queue
+                <li>27: Examiner</li>
+                <li>28: Manager</li>
+                <li>29: ESISClaims</li>
+                <li>39: AdminLimited</li>
+              </ul>
+              <ul>Operations Queue
+                <li>30: Unassigned</li>
+                <li>31: Research</li>
+                <li>32: NoMatch</li>
+                <li>37: RecordOnly</li>
+              </ul>
+            </div>
+          <p>After identifing what is needed to give the requested user access you must write your SQL insert statements to make the changes.</p>
+          <pre><code class="language-sql">Insert portal.ExaminerRole
+Select '6614','32' 
+Insert portal.ExaminerRole
+Select '6614','30'
+Insert portal.ExaminerRole
+Select '6614','31'
+Insert portal.ExaminerRole
+Select '6614','37' </code></pre>
+            <p>In the above example the Examiner ID 6614 is being given access to the Operations Queue. 
+          <h4>Key Notes</h4>
+          <ul>
+            <li>Role 27 always exists and should not be removed</li>
+            <li>Duplicate Roles Should NOT be added</li>
+          </ul>
+          </div>
+          <div>
+            <h2 id="update-your-ticket">Update Your Ticket</h2>
+            <p>As always the final step to any ticket is to update the ticket opener and note the SQL you used!</p>
+          </div>
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-sql.min.js"></script>
+
               <section class="content-tags">
                 <p>Related to</p>
                 <ul class="content-tag-list">

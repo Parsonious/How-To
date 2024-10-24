@@ -1111,7 +1111,24 @@ Table of Contents Styles (Mirrored Sidebar)
 color: var(--color-secondary-hover);
 }
 
+.stacked-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Center the entire container */
+}
 
+.stacked-list ul {
+    list-style-position: inside;
+    padding-left: 1em; /* Adds space between the bullet points and list content */
+}
+
+.stacked-list li {
+    margin-bottom: 0.5em; /* Adds space between list items */
+}
 
 /* Content Tags */
 .content-tags {
@@ -1125,13 +1142,17 @@ color: var(--color-secondary-hover);
 }
 
 .content-tag-list {
+    list-style: none;
     display: flex;
     gap: var(--spacing-xs, 10px);
     flex-wrap: wrap;
 }
+.content-tag-item::marker{
+    display:none;
+}
 
 .content-tag-item a {
-    background-color: #e0e0e0; /* Consider defining a variable if reused */
+    background-color: #e0e0e0;
     color: var(--color-dark-gray, #333333);
     padding: 5px 10px;
     border-radius: var(--border-radius-lg, 20px);
@@ -1140,7 +1161,7 @@ color: var(--color-secondary-hover);
 }
 
 .content-tag-item a:hover {
-    background-color: #c0c0c0; /* Consider defining a variable if reused */
+    background-color: #c0c0c0;
 }
 
 /* ================================
@@ -1160,8 +1181,11 @@ color: var(--color-secondary-hover);
     gap: var(--spacing-sm, 15px);
     margin-bottom: var(--spacing-sm, 15px);
 }
-
+.article-share .share li {
+    list-style: none;
+}
 .share li a {
+
     display: flex;
     align-items: center;
     gap: var(--spacing-xs, 5px);

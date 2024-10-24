@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMIT Add Roles To User</title>
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="../css/article.css" as="style">
+    <link rel="stylesheet" href="../css/article.css">
+    
+    <!-- Preload and defer JavaScript -->
+    <link rel="preload" href="../js/article.js" as="script">
+    <script type="text/javascript" src="../js/article.js" defer></script>
+
+    <!-- Preload critical Prism.js components -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-sql.min.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" as="style">
+
+    <!-- Load Prism.js CSS immediately -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet" />
+
+    <!-- Defer loading of Prism.js scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-sql.min.js" defer></script>
+</head>
+
+    <article id="main-content" class="article">
+
+        <section class="article-info">
+            <div class="article-content">
+                <div class="article-body">
+                    <section class="article-info">
+                        <div class="article-content">
+                            <nav class="table-of-contents article-sidebar collapsed">
+                                <!-- ToC Title -->
+                                <div class="collapsible-sidebar-title" aria-label="Toggle Table of Contents"
+                                    tabindex="0">
+                                    <span>Table of Contents</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false"
+                                        viewBox="0 0 12 12" aria-hidden="true" class="chevron-icon">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
+                                    </svg>
+                                </div>
+
+                                <!-- ToC Content -->
+                                <div class="collapsible-sidebar-body toc-content">
+                                    <ol>
+                                        <li>
+                                            <a href="#brief-description-of-this-task">Brief Description of This Task</a>
+                                        </li>
+                                        <li>
+                                            <a href="#task-prerequisites">Task Prerequisites</a>
+                                        </li>
+                                        <li>
+                                            <button class="toc-toggle-button" aria-expanded="false"
+                                                data-target="sample-tickets-list">
+                                                Sample Tickets
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                    focusable="false" viewBox="0 0 12 12" aria-hidden="true"
+                                                    class="chevron-icon">
+                                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                        d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
+                                                </svg>
+                                            </button>
+                                            <ul class="sub-toc-content sample-tickets-list">
+                                                <li><a
+                                                        href="https://compiqsolutions.zendesk.com/agent/tickets/78546">78546</a>
+                                                </li>
+                                                <li><a
+                                                        href="https://compiqsolutions.zendesk.com/agent/tickets/67158">67158</a>
+                                                </li>
+                                                <li><a
+                                                        href="https://compiqsolutions.zendesk.com/agent/tickets/99643">99643</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#keywords-to-look-for">Keywords To Look For</a>
+                                        </li>
+                                        <li>
+                                            <button class="toc-toggle-button collapsed" aria-expanded="false"
+                                                data-target="steps-tickets-list">
+                                                Steps To Working These Tickets
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                    focusable="false" viewBox="0 0 12 12" aria-hidden="true"
+                                                    class="chevron-icon">
+                                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                                        d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
+                                                </svg>
+                                            </button>
+                                            <ul class="sub-toc-content steps-tickets-list">
+                                                <li><a href="#identify-the-ticket">Identify The Ticket</a></li>
+                                                <!-- <li>
+                                        <button class="toc-toggle-button" aria-expanded="false" data-target="fill-ticket-form-list">
+                                            Fill Out Ticket Form
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="chevron-icon">
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"></path>
+                                            </svg>
+                                        </button>
+                                        <ul class="sub-toc-content fill-ticket-form-list">
+                                            <li><a href="#section-1">Section 1</a></li>
+                                            <li><a href="#section-2">Section 2</a></li>
+                                            <li><a href="#section-3">Section 3</a></li>
+                                        </ul>
+                                    </li> -->
+                                                <li><a href="#write-your-sql">Write Your SQL</a></li>
+                                                <li><a href="#update-your-ticket">Update Your Ticket</a></li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </nav>
+
+                            <h2 id="brief-description-of-this-task">Brief Description of This Task</h2>
+                            <p>Users in EMIT require Technical Support intervention in order to access more than the
+                                basic
+                                Examiner Queue.
+                                This task involves running a SQL Select statement and a series of Insert statements in
+                                order
+                                to provide the specified EMIT User(s) with the requested access level.
+                                While originally development was intended to be made to allow ESIS to perform this task
+                                themselves, EMIT can be buggy at times. This can be due in part to its older framework
+                                so it
+                                remains likely that this task will continue to be a required Technical Support task for
+                                a
+                                while yet.</p>
+                            <h2 id="task-prerequisites">Task Prerequisites</h2>
+                            <ul>
+                                <li>Read and Write privileges on the GalantUT.dbo.ESIS database.</li>
+                                <li>The ticket Opener must provide the Examiner Code for any Examiner that needs to be
+                                    updated</li>
+                            </ul>
+
+                            <h3 id="sample-tickets">Sample Tickets</h3>
+                            <ul class="sample-tickets">
+                                <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/78546">78546</a></li>
+                                <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/67158">67158</a></li>
+                                <li><a href="https://compiqsolutions.zendesk.com/agent/tickets/99643">99643</a></li>
+                            </ul>
+
+                            <div class="keywords-to-look-for">
+                                <h3 id="keywords-to-look-for">Keywords To Look For</h3>
+                                <ul>
+                                    <li>EMIT Add Roles To User</li>
+                                    <li>Operations Queues</li>
+                                    <li>Internal Queues</li>
+                                </ul>
+                            </div>
+
+                            <hr style="color: #1e293a;">
+
+                            <h2 id="identify-the-ticket">Identify The Ticket</h2>
+                            <div>
+                                <p>Identifying these tickets can be quite simple. The title of the ticket typically
+                                    falls
+                                    within the range of the titles found in the linked sample tickets.
+                                    For instance: "EMIT - User Needs Access To Operations Queues" as seen in ticket
+                                    number
+                                    99463 indicates that the EMIT user does not currently have access to
+                                    the mentioned queue and needs access granted by a member of the Technical Services
+                                    team.
+                                </p>
+                            </div>
+                            <hr>
+                            <h2 id="write-your-sql">Writing Your Sql</h2>
+                            <div>
+                                <p>First you want to identify what roles already exist under the given user. This can be
+                                    accomplished with the following SQL script:</p>
+                                <pre><code class="language-sql">USE ESIS
+SELECT * FROM 
+portal.ExaminerRole ER join portal.Role R
+	on ER.RoleID = R.RoleID
+Join portal.Examiner E
+	on E.ExaminerID = ER.ExaminerID
+Join portal.Login L
+	on E.LoginID = L.LoginID
+Where E.ExaminerCode = '' --take out hyphen
+order by L.FirstName
+              </code></pre>
+                                <p>Once you've identified the roles that are present, you will need to take note of the
+                                    ExaminerID column that is present in this original Select statement. That is the ID
+                                    used
+                                    for the rest of the task.</p>
+                                <h4>Roles Needed For Individual Queues</h4>
+                                <div class="stacked-list">
+                                    <ul>Internal Queue
+                                        <li>27: Examiner</li>
+                                        <li>28: Manager</li>
+                                        <li>29: ESISClaims</li>
+                                        <li>39: AdminLimited</li>
+                                    </ul>
+                                    <ul>Operations Queue
+                                        <li>30: Unassigned</li>
+                                        <li>31: Research</li>
+                                        <li>32: NoMatch</li>
+                                        <li>37: RecordOnly</li>
+                                    </ul>
+                                </div>
+                                <p>After identifing what is needed to give the requested user access you must write your
+                                    SQL
+                                    insert statements to make the changes.</p>
+                                <pre><code class="language-sql">Insert portal.ExaminerRole
+Select '6614','32' 
+Insert portal.ExaminerRole
+Select '6614','30'
+Insert portal.ExaminerRole
+Select '6614','31'
+Insert portal.ExaminerRole
+Select '6614','37' </code></pre>
+                                <p>In the above example the Examiner ID 6614 is being given access to the Operations
+                                    Queue.
+                                <h4>Key Notes</h4>
+                                <ul>
+                                    <li>Role 27 always exists and should not be removed</li>
+                                    <li>Duplicate Roles Should NOT be added</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h2 id="update-your-ticket">Update Your Ticket</h2>
+                                <p>As always the final step to any ticket is to update the ticket opener and note the
+                                    SQL
+                                    you used!</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+
+
+    </article>
