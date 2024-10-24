@@ -552,7 +552,7 @@ footer .article-share {
        width: 100%;
    }
    
-   .article-container {
+   #article-container .article-container {
        padding-left: var(--spacing-md, 20px);
        display: flex;
        flex-direction: column;
